@@ -1,16 +1,15 @@
-import 'package:doan/views/Login/login.dart';
 import 'package:doan/views/home/welcome.dart';
 import 'package:flutter/material.dart';
 
-class homepage extends StatefulWidget {
-  const homepage({Key? key}) : super(key: key);
+class getpage extends StatefulWidget {
+  const getpage({Key? key}) : super(key: key);
 
   @override
-  _homepageState createState() => _homepageState();
+  _getpageState createState() => _getpageState();
 }
 
 // ignore: camel_case_types
-class _homepageState extends State<homepage> {
+class _getpageState extends State<getpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

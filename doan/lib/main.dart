@@ -3,6 +3,7 @@ import 'package:doan/views/Login/password.dart';
 import 'package:doan/views/SignUp/confirmphonenumber.dart';
 import 'package:doan/views/SignUp/signup.dart';
 import 'package:doan/views/home/home.dart';
+import 'package:doan/views/trangchu/trangchu.dart';
 import 'package:flutter/material.dart';
 
 void main() {
