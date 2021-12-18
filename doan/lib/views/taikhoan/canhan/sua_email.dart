@@ -5,15 +5,44 @@ class SuaEmail extends StatefulWidget {
   @override
   _SuaEmailState createState() => _SuaEmailState();
 }
-
+final email =   TextEditingController();
 class _SuaEmailState extends State<SuaEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Email"),
-      ),
+        appBar: AppBar(
+          title: const Text('Email '),
+        ),
+        body:
+        Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const  Text('Email', style: TextStyle(fontSize: 20),),
+                TextField(
+                  decoration:  InputDecoration(
+                      hintText: "vantien@gmail.com",
+                      suffixIcon: IconButton(
+                        onPressed: (){},
+                        icon: const Icon(Icons.cancel ,),
+                        splashRadius: 20,
+                      )
 
+                  ),
+                  controller: email,
+                ),
+                ElevatedButton(
+                  onPressed: (){
+                  },
+                  child: Text("Lưu Thay Đổi"),
+                  style: TextButton.styleFrom(
+                      minimumSize: Size(400,35)
+                  ),
+                )
+              ],
+            )
+        )
     );
   }
 }

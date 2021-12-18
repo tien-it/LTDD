@@ -25,7 +25,6 @@ class _Sua_HovaTenState extends State<Sua_HovaTen> {
                 TextField(
                   decoration:  InputDecoration(
                       hintText: "Đinh Văn Tiến",
-                      border: OutlineInputBorder(),
                       suffixIcon: IconButton(
                           onPressed: (){},
                           icon: const Icon(Icons.cancel ,),
