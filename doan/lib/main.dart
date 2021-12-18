@@ -12,6 +12,7 @@ import 'package:doan/views/taikhoan/canhan/sua_ngaysinh.dart';
 import 'package:doan/views/taikhoan/canhan/sua_sodienthoai.dart';
 import 'package:doan/views/taikhoan/canhan/sua_tendangnhap.dart';
 import 'package:doan/views/taikhoan/canhan/thongtincanhan.dart';
+import 'package:doan/views/taikhoan/donhang/donhang.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         '/doigioitinh': (context) => const DoiGioiTinh(),
         '/doimatkhau': (context) => const DoiMatKhau(),
         '/suatendangnhap': (context) => const SuaTenDangNhap(),
-
+        '/donhang': (context) => const DonHang(),
 
       },
       debugShowCheckedModeBanner: false,
