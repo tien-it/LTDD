@@ -147,6 +147,7 @@ class _AccountPageState extends State<AccountPage> {
 
           ],
         ),
+        const  SizedBox(height: 20),
         Column(
           children: [
             Padding(
@@ -169,7 +170,9 @@ class _AccountPageState extends State<AccountPage> {
                     color: Colors.blue,
                     splashColor: Colors.blue) ,
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pushNamed(context, '/thong_tin_ca_nhan');
+                },
                     icon: const Icon(Icons.person),
                     iconSize: 30,
                     color: Colors.blue,
