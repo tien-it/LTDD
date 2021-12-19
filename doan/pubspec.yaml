@@ -29,7 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  carousel_slider: ^4.0.0
+  shimmer: ^2.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -64,6 +65,16 @@ flutter:
     - icons/facebook.png
     - icons/icons8-google-48.png
     - icons/icons8-zalo-48.png
+    - icons/facebook.png
+    - icons/icon/seater-sofa.png
+    - icons/icon/home-decor.png
+    - icons/icon/bath.png
+    - icons/icon/kitchen.png
+    - icons/icon/electrical-appliance.png
+    - icons/icon/double-bed.png
+    - icons/icon/coupon.png
+    - icons/icon/more.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

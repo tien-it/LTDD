@@ -2,15 +2,15 @@ import 'package:doan/views/Login/login.dart';
 import 'package:doan/views/home/welcome.dart';
 import 'package:flutter/material.dart';
 
-class homepage extends StatefulWidget {
-  const homepage({Key? key}) : super(key: key);
+class pageLoading extends StatefulWidget {
+  const pageLoading({Key? key}) : super(key: key);
 
   @override
-  _homepageState createState() => _homepageState();
+  _pageLoadingState createState() => _pageLoadingState();
 }
 
 // ignore: camel_case_types
-class _homepageState extends State<homepage> {
+class _pageLoadingState extends State<pageLoading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
