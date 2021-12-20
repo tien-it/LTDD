@@ -2,15 +2,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CreatePassPage extends StatefulWidget {
-  const CreatePassPage({Key? key}) : super(key: key);
+class CreateNewPassPage extends StatefulWidget {
+  const CreateNewPassPage({Key? key}) : super(key: key);
   @override
-  State<CreatePassPage> createState() => _CreatePassPageState();
+  State<CreateNewPassPage> createState() => _CreateNewPassPageState();
 }
 bool isHiddenPassword1 = true;
 bool isHiddenPassword2 = true;
 
-class _CreatePassPageState extends State<CreatePassPage> {
+class _CreateNewPassPageState extends State<CreateNewPassPage> {
   @override
   Widget build(BuildContext context){
     return GestureDetector(
@@ -30,7 +30,7 @@ class _CreatePassPageState extends State<CreatePassPage> {
           ),
           title: const Align(
             child: Text(
-              'Điền thông tin',
+              'Tạo mật khẩu mới',
               style: TextStyle(
               fontSize: 20,
               ),
@@ -48,12 +48,8 @@ class _CreatePassPageState extends State<CreatePassPage> {
             children:<Widget> [   
               textSignUp,
               const SizedBox(height: 5,),
-              textDescription,
-              const SizedBox(height: 35,),
-              textfieldSignUpName,
-              const SizedBox(height: 15,),
-              textfieldEmail,
-              const SizedBox(height: 15,),
+              textDescription,            
+              const SizedBox(height: 80,),
               Padding(
                 padding: const EdgeInsets.only(left: 30,right: 30),
                 child: Column(
@@ -82,7 +78,7 @@ class _CreatePassPageState extends State<CreatePassPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 15,),
+              const SizedBox(height: 30,),
               Padding(
                 padding: const EdgeInsets.only(left: 30,right: 30),
                 child: Column(
@@ -106,13 +102,13 @@ class _CreatePassPageState extends State<CreatePassPage> {
                         ),        
                       ),        
                       keyboardType: TextInputType.text,     
-                      textInputAction: TextInputAction.next,                             
+                      textInputAction: TextInputAction.done,                             
                     ),    
                   ],
                 ),
               ),
               const SizedBox(height: 100,),
-              buttondangki
+              buttondangki(context)
             ]
           ),
         )
@@ -135,7 +131,7 @@ Widget textSignUp = Padding(
   child: Column(
     children: const <Widget>[
       Text(
-        'Đăng kí tài khoản',
+        'Tạo mật khẩu',
         style: TextStyle(
           fontSize: 30,
           color: Colors.red,
@@ -150,7 +146,7 @@ Widget textDescription = Padding(
   child: Column(
     children: const <Widget>[
       Text(
-        'Vui lòng điền thông tin đăng kí',
+        'Vui lòng nhập mới mật khẩu',
         style: TextStyle(
           fontSize: 15,
           color: Colors.red,
@@ -159,74 +155,27 @@ Widget textDescription = Padding(
     ],
   ),
 );
-
-Widget textfieldSignUpName = Padding(
-  padding: const EdgeInsets.only(left: 30,right: 30),
-  child: Column(
-    children: const <Widget>[
-      TextField(   
-        cursorColor: Colors.blue,
-        style: TextStyle(
-          fontSize: 20
-        ),
-        decoration: InputDecoration(   
-          prefixIcon:Icon(Icons.person),      
-          labelText: 'Tên đăng nhập',
-          border: OutlineInputBorder( 
-            borderRadius:  BorderRadius.all(Radius.circular(20.0)),
+Widget buttondangki(BuildContext  context){
+  return Column(
+    children:<Widget> [
+      const Padding(
+        padding: EdgeInsets.only(left: 500)
+      ),
+      ElevatedButton(
+        onPressed:() {       
+        }, 
+        child: const Text(       
+          'Xác nhận',
+          style: TextStyle(      
+            fontSize: 20,       
+            color: Colors.white,
           ),
-        ),        
-        keyboardType: TextInputType.text,     
-        textInputAction: TextInputAction.next,                 
-    ),     
-    ],
-  ),
-);
-
-Widget textfieldEmail = Padding(
-  padding: const EdgeInsets.only(left: 30,right: 30),
-  child: Column(
-    children: const <Widget>[
-      TextField(   
-        cursorColor: Colors.blue,
-        style: TextStyle(
-          fontSize: 20
         ),
-        decoration: InputDecoration(         
-          labelText: 'Email',
-          prefixIcon:Icon(Icons.email),
-          border: OutlineInputBorder(          
-            borderRadius:  BorderRadius.all(Radius.circular(20.0)),
-            
-          ),
-        ),        
-        keyboardType: TextInputType.emailAddress,     
-        textInputAction: TextInputAction.next,                  
-    ),     
+        style: TextButton.styleFrom(                     
+          minimumSize: const Size(355,40),     
+          backgroundColor: Colors.red,                
+        ),      
+      ), 
     ],
-  ),
-);
-
-Widget buttondangki =  Column(
-  children:<Widget> [
-    const Padding(
-      padding: EdgeInsets.only(left: 500)
-    ),
-    ElevatedButton(
-      onPressed:() {       
-      }, 
-      child: const Text(       
-        'Tạo tài khoản',
-      style: TextStyle(      
-        fontSize: 20,       
-        color: Colors.white,
-      ),
-      ),
-      style: TextButton.styleFrom(                     
-        minimumSize: const Size(355,40),     
-        backgroundColor: Colors.red,                
-      ),
-      
-    ), 
-  ],        
-);
+  );
+}

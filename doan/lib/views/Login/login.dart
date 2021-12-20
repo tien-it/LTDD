@@ -102,7 +102,7 @@ Widget imageHead = Stack(
       ),
       Positioned(
         top: 10,
-        left: 10,
+        left: 10, 
         child: IconButton(
         onPressed: (){}, 
         icon: const Icon(

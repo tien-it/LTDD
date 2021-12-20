@@ -64,6 +64,11 @@ flutter:
     - icons/facebook.png
     - icons/icons8-google-48.png
     - icons/icons8-zalo-48.png
+    - icons/avatar.png
+    - icons/momo.png
+    - icons/momo.jpg
+    - icons/line.jpg
+    - icons/kesach.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
