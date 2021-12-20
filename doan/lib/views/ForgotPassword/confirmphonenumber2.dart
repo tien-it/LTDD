@@ -1,15 +1,15 @@
-import 'package:doan/views/Login/password.dart';
-import 'package:doan/views/SignUp/confirmphonenumber.dart';
+
+import 'package:doan/views/ForgotPassword/createnewpass.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class ConfirmPhoneNumberSecondPage extends StatefulWidget {
+  const ConfirmPhoneNumberSecondPage({Key? key}) : super(key: key);
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<ConfirmPhoneNumberSecondPage> createState() => _ConfirmPhoneNumberSecondPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _ConfirmPhoneNumberSecondPageState extends State<ConfirmPhoneNumberSecondPage> {
   @override
   Widget build(BuildContext context){
     return GestureDetector(
@@ -29,7 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           title: const Align(
             child: Text(
-              'Tạo tài khoản',
+              'Xác minh số điện thoại',
               style: TextStyle(
               fontSize: 20,
               ),
@@ -37,22 +37,22 @@ class _SignUpPageState extends State<SignUpPage> {
             alignment: Alignment.centerLeft,
           ),                
           backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,        
-          automaticallyImplyLeading: false, 
+          foregroundColor: Colors.white,      
+          automaticallyImplyLeading: false,   
         ),
         body: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(                
             crossAxisAlignment: CrossAxisAlignment.start,           
             children:<Widget> [   
-              const SizedBox(height: 50,),                     
-              textphone,
-              const SizedBox(height: 10,),
+              const SizedBox(height: 50,), 
+              textcode,   
+              const SizedBox(height: 10,),                              
               textdescription,
               const SizedBox(height: 10,),
-              textfieldPhone,
+              textfieldcode,
               const SizedBox(height: 50,),  
-              buttoncontineu(context),
+              buttonconfrim(context),
             ]
           ),
         )
@@ -61,11 +61,11 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 }
 
-Widget textphone = Column(
+Widget textcode = Column(
   children: const <Widget>[
     Padding(padding: EdgeInsets.only(left: 255)),
     Text(
-      'Nhập số điện thoại',
+      'Nhập mã xác minh',
       style:TextStyle(
         fontSize: 26,       
       ),
@@ -73,19 +73,23 @@ Widget textphone = Column(
   ],
 );
 
-Widget textdescription = Column(
-  children: const <Widget>[
-    Padding(padding: EdgeInsets.only(left: 360)),
-    Text(
-      'Vui lòng nhập số điện thoại để đăng kí tài khoản',
-      style:TextStyle(
-        fontSize: 15,       
+Widget textdescription = Padding(
+  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+  child: Column(
+    children: const <Widget>[   
+      Text(
+        'Để xác minh số điện thoại của bạn, nhập mã gồm 6 chữ '
+        'số vừa được gửi tới 0829912585',
+        style:TextStyle(
+          fontSize: 15,       
+        ),
       ),
-    ),
-  ],
-);
+    ],
+  ),
+); 
 
-Widget textfieldPhone =  const Padding(   
+
+Widget textfieldcode=  const Padding(   
     padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
     child: TextField(   
       cursorColor: Colors.blue,
@@ -96,15 +100,14 @@ Widget textfieldPhone =  const Padding(
         
       ),
       decoration: InputDecoration(         
-        hintText:  "Số điện thoại",             
+        hintText:  "Mã xác nhận",             
       ),        
       keyboardType: TextInputType.number,     
       textInputAction: TextInputAction.done,     
-      maxLength: 10,              
+      maxLength: 6,              
     ),     
 );
-
-Widget buttoncontineu(BuildContext context ){
+Widget buttonconfrim(BuildContext context){
   return Padding(
     padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
     child:  
@@ -112,21 +115,20 @@ Widget buttoncontineu(BuildContext context ){
         onPressed:() {
           Navigator.push(        
             context,           
-            MaterialPageRoute(builder: (context) => const ConfirmPhoneNumberPage()),
+            MaterialPageRoute(builder: (context) => const CreateNewPassPage()),
           );
         }, 
         child: const Text(
-        'Tiếp tục',
+          'Xác nhận',
         style: TextStyle(
-        fontSize: 20,       
-        color: Colors.white,
+          fontSize: 20,       
+          color: Colors.white,
+          ),
+        ),
+        style: TextButton.styleFrom(                     
+          minimumSize: const Size(355,40),     
+          backgroundColor: Colors.red,                
         ),
       ),
-      style: TextButton.styleFrom(                     
-        minimumSize: const Size(355,40),     
-        backgroundColor: Colors.red,                
-      ),
-    ),  
-  );
-}
-
+    );
+  } 

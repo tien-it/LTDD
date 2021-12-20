@@ -1,3 +1,4 @@
+import 'package:doan/views/ForgotPassword/phonepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -61,7 +62,7 @@ class _PassWordPageState extends State<PassWordPage> {
              const SizedBox(height: 400,),
              buttondangnhap,
              const SizedBox(height: 10,),
-             textOption,
+             textOption(context),
             ]
           ),
         )
@@ -153,35 +154,37 @@ Widget buttondangnhap =  Column(
     ), 
   ],        
 );
+Widget textOption(BuildContext context){
+  return Padding(
+    padding:const  EdgeInsets.fromLTRB(20, 0, 20, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        TextButton(
+        onPressed: (){
+          Navigator.push(context,  MaterialPageRoute(builder: (context) => const ForgotPassWordPage()));
+        }, 
+        child: const Text(
+          "Quên mật khẩu?",
+          style: TextStyle(        
+            fontSize: 13 ,         
+            color: Color(0xFF1565C0)
+          ),
+        ),
+      ),
+        TextButton(
+          onPressed: (){}, 
+          child: const Text(
+            "Đăng nhập bằng SMS",
+            style: TextStyle(        
+              fontSize: 13 ,         
+              color: Color(0xFF1565C0)
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+} 
 
-Widget textOption= Padding(
-  padding:const  EdgeInsets.fromLTRB(20, 0, 20, 0),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-      TextButton(
-      onPressed: (){}, 
-      child: const Text(
-        "Quên mật khẩu?",
-        style: TextStyle(        
-          fontSize: 13 ,
-          
-          color: Color(0xFF1565C0)
-        ),
-      ),
-    ),
-    TextButton(
-      onPressed: (){}, 
-      child: const Text(
-        "Đăng nhập bằng SMS",
-        style: TextStyle(        
-          fontSize: 13 ,
-          
-          color: Color(0xFF1565C0)
-        ),
-      ),
-    ),
-    ],
-  ),
-);
   

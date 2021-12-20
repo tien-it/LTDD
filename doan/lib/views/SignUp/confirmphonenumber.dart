@@ -1,4 +1,5 @@
-import 'package:doan/views/Login/password.dart';
+
+import 'package:doan/views/SignUp/createpass.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,12 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
       },
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            }
+          ),
           title: const Align(
             child: Text(
               'Xác minh số điện thoại',
@@ -27,10 +34,11 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
               fontSize: 20,
               ),
             ),
-            alignment: Alignment.center,
+            alignment: Alignment.centerLeft,
           ),                
           backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,         
+          foregroundColor: Colors.white,      
+          automaticallyImplyLeading: false,   
         ),
         body: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -44,7 +52,7 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
               const SizedBox(height: 10,),
               textfieldcode,
               const SizedBox(height: 50,),  
-              buttonconfrim
+              buttonconfrim(context),
             ]
           ),
         )
@@ -99,22 +107,28 @@ Widget textfieldcode=  const Padding(
       maxLength: 6,              
     ),     
 );
-
-Widget buttonconfrim =  Padding(
-  padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-  child:  
-    ElevatedButton(
-      onPressed:() {}, 
-      child: const Text(
-        'Xác nhận',
-      style: TextStyle(
-        fontSize: 20,       
-        color: Colors.white,
+Widget buttonconfrim(BuildContext context){
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+    child:  
+      ElevatedButton(
+        onPressed:() {
+          Navigator.push(        
+            context,           
+            MaterialPageRoute(builder: (context) => const CreatePassPage()),
+          );
+        }, 
+        child: const Text(
+          'Xác nhận',
+        style: TextStyle(
+          fontSize: 20,       
+          color: Colors.white,
+          ),
+        ),
+        style: TextButton.styleFrom(                     
+          minimumSize: const Size(355,40),     
+          backgroundColor: Colors.red,                
+        ),
       ),
-      ),
-      style: TextButton.styleFrom(                     
-        minimumSize: const Size(355,40),     
-        backgroundColor: Colors.red,                
-      ),
-    ),         
-);
+    );
+  } 

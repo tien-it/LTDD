@@ -1,6 +1,15 @@
+import 'package:doan/views/AddressBook/addressnullpage.dart';
+import 'package:doan/views/AddressBook/addresspage.dart';
+import 'package:doan/views/BillInfomation/billinfonullpage.dart';
+import 'package:doan/views/BillInfomation/billinforpage.dart';
+import 'package:doan/views/ForgotPassword/createnewpass.dart';
+import 'package:doan/views/ForgotPassword/phonepage.dart';
 import 'package:doan/views/Login/login.dart';
 import 'package:doan/views/Login/password.dart';
+import 'package:doan/views/Saw/sawnullpage.dart';
+import 'package:doan/views/Saw/sawpage.dart';
 import 'package:doan/views/SignUp/confirmphonenumber.dart';
+import 'package:doan/views/SignUp/createpass.dart';
 import 'package:doan/views/SignUp/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(             
         primaryColor: Colors.white,
       ),
-      home: const LoginPage(),
+      home: const SawPage(),
       debugShowCheckedModeBanner: false,
     );
   }
