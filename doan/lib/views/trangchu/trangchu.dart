@@ -30,10 +30,6 @@ class _homepageState extends State<homepage> {
     );
   }
 
-<<<<<<< HEAD
-  List itemTab = [
-    {"icon": Icons.home, "size": 29.0},
-=======
   List btnProType = [
     {"img": "icons/icon/seater-sofa.png", "name": "Nội thất"},
     {"img": "icons/icon/home-decor.png", "name": "Trang trí nhà cửa"},
@@ -49,7 +45,6 @@ class _homepageState extends State<homepage> {
   ];
   List itemTab = [
     {"icon": Icons.home, "size": 28.0},
->>>>>>> AnhNhat
     {"icon": Icons.favorite, "size": 28.0},
     {"icon": Icons.notifications, "size": 28.0},
     {"icon": Icons.person, "size": 30.0},
@@ -177,13 +172,10 @@ class _homepageState extends State<homepage> {
           padding: const EdgeInsets.all(0),
           child: _carousel(),
         ),
-<<<<<<< HEAD
-=======
         Padding(
           padding: const EdgeInsets.all(5),
           child: _productType(),
         ),
->>>>>>> AnhNhat
       ],
     );
   }
@@ -273,8 +265,6 @@ class _homepageState extends State<homepage> {
       ],
     );
   }
-<<<<<<< HEAD
-=======
 
   Widget _productType() {
     return Center(
@@ -319,5 +309,4 @@ class _homepageState extends State<homepage> {
       )),
     );
   }
->>>>>>> AnhNhat
 }
