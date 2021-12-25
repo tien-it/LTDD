@@ -12,6 +12,7 @@ import 'package:doan/views/SignUp/confirmphonenumber.dart';
 import 'package:doan/views/SignUp/createpass.dart';
 import 'package:doan/views/SignUp/signup.dart';
 import 'package:doan/views/home/home.dart';
+<<<<<<< HEAD
 import 'package:doan/views/taikhoan/account_page.dart';
 import 'package:doan/views/taikhoan/canhan/sua_email.dart';
 import 'package:doan/views/taikhoan/canhan/sua_gioitinh.dart';
@@ -22,6 +23,8 @@ import 'package:doan/views/taikhoan/canhan/sua_sodienthoai.dart';
 import 'package:doan/views/taikhoan/canhan/sua_tendangnhap.dart';
 import 'package:doan/views/taikhoan/canhan/thongtincanhan.dart';
 import 'package:doan/views/taikhoan/donhang/donhang.dart';
+=======
+>>>>>>> AnhNhat
 import 'package:doan/views/trangchu/trangchu.dart';
 import 'package:flutter/material.dart';
 

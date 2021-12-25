@@ -10,6 +10,16 @@ class getpage extends StatefulWidget {
 
 // ignore: camel_case_types
 class _getpageState extends State<getpage> {
+class pageLoading extends StatefulWidget {
+  const pageLoading({Key? key}) : super(key: key);
+
+  @override
+  _pageLoadingState createState() => _pageLoadingState();
+}
+
+// ignore: camel_case_types
+class _pageLoadingState extends State<pageLoading> {
+>>>>>>> AnhNhat
   @override
   Widget build(BuildContext context) {
     return Scaffold(

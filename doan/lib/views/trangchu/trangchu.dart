@@ -30,8 +30,26 @@ class _homepageState extends State<homepage> {
     );
   }
 
+<<<<<<< HEAD
   List itemTab = [
     {"icon": Icons.home, "size": 29.0},
+=======
+  List btnProType = [
+    {"img": "icons/icon/seater-sofa.png", "name": "Nội thất"},
+    {"img": "icons/icon/home-decor.png", "name": "Trang trí nhà cửa"},
+    {"img": "icons/icon/bath.png", "name": "Đồ dùng,-phòng tắm"},
+    {"img": "icons/icon/kitchen.png", "name": "Đồ dùng nhà bếp,phòng ăn"},
+    {
+      "img": "icons/icon/electrical-appliance.png",
+      "name": "Đồ dùng nhà bếp,phòng ăn"
+    },
+    {"img": "icons/icon/double-bed.png", "name": "Điện tử"},
+    {"img": "icons/icon/coupon.png", "name": "Vourcher"},
+    {"img": "icons/icon/more.png", "name": "Xem thêm"},
+  ];
+  List itemTab = [
+    {"icon": Icons.home, "size": 28.0},
+>>>>>>> AnhNhat
     {"icon": Icons.favorite, "size": 28.0},
     {"icon": Icons.notifications, "size": 28.0},
     {"icon": Icons.person, "size": 30.0},
@@ -159,6 +177,13 @@ class _homepageState extends State<homepage> {
           padding: const EdgeInsets.all(0),
           child: _carousel(),
         ),
+<<<<<<< HEAD
+=======
+        Padding(
+          padding: const EdgeInsets.all(5),
+          child: _productType(),
+        ),
+>>>>>>> AnhNhat
       ],
     );
   }
@@ -248,4 +273,51 @@ class _homepageState extends State<homepage> {
       ],
     );
   }
+<<<<<<< HEAD
+=======
+
+  Widget _productType() {
+    return Center(
+      child: Wrap(
+          children: List.generate(
+        btnProType.length,
+        (index) =>
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 35,
+                  height: 35,
+                  child: Image.asset(btnProType[index]['img']),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Wrap(children: [
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: SizedBox(
+                        height: 35,
+                        width: 80,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                btnProType[index]['name'],
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(fontSize: 12),
+                              )
+                            ]),
+                      ))
+                ])
+              ],
+            ),
+          )
+        ]),
+      )),
+    );
+  }
+>>>>>>> AnhNhat
 }

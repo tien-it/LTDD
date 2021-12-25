@@ -16,7 +16,11 @@ packages:
     source: hosted
     version: "2.1.0"
   carousel_slider:
+<<<<<<< HEAD
     dependency: "direct dev"
+=======
+    dependency: "direct main"
+>>>>>>> AnhNhat
     description:
       name: carousel_slider
       url: "https://pub.dartlang.org"
@@ -110,7 +114,11 @@ packages:
     source: hosted
     version: "1.8.0"
   shimmer:
+<<<<<<< HEAD
     dependency: "direct dev"
+=======
+    dependency: "direct main"
+>>>>>>> AnhNhat
     description:
       name: shimmer
       url: "https://pub.dartlang.org"
