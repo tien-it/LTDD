@@ -18,7 +18,6 @@ packages:
   carousel_slider:
     dependency: "direct dev"
 
-    dependency: "direct main"
 
     description:
       name: carousel_slider
