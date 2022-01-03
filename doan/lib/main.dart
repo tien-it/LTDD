@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/intro',
+      initialRoute: '/wellcome',
       onGenerateRoute: Routes.generateRoute,
     );
   }

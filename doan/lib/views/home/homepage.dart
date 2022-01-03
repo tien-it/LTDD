@@ -1,3 +1,5 @@
+
+import 'package:doan/resources/configs/config.dart';
 import 'package:doan/views/home/carousel_loading.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -31,17 +33,17 @@ class _homepageState extends State<homepage> {
   }
 
   List btnProType = [
-    {"img": "icons/icon/seater-sofa.png", "name": "Nội thất"},
-    {"img": "icons/icon/homee-decor.png", "name": "Trang trí nhà cửa"},
-    {"img": "icons/icon/bath.png", "name": "Đồ dùng,-phòng tắm"},
-    {"img": "icons/icon/kitchen.png", "name": "Đồ dùng nhà bếp,phòng ăn"},
+    {"img": MyIcons.seater_sofa , "name": "Nội thất"},
+    {"img": MyIcons.home_detor, "name": "Trang trí nhà cửa"},
+    {"img": MyIcons.bath, "name": "Đồ dùng,-phòng tắm"},
+    {"img": MyIcons.kitchen, "name": "Đồ dùng nhà bếp,phòng ăn"},
     {
-      "img": "icons/icon/electrical-appliance.png",
+      "img": MyIcons.electrical,
       "name": "Đồ dùng nhà bếp,phòng ăn"
     },
-    {"img": "icons/icon/double-bed.png", "name": "Điện tử"},
-    {"img": "icons/icon/coupon.png", "name": "Vourcher"},
-    {"img": "icons/icon/more.png", "name": "Xem thêm"},
+    {"img": MyIcons.double_bed, "name": "Điện tử"},
+    {"img": MyIcons.coupon, "name": "Vourcher"},
+    {"img": MyIcons.more, "name": "Xem thêm"},
   ];
   List itemTab = [
     {"icon": Icons.home, "size": 28.0},

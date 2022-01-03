@@ -1,6 +1,4 @@
-
 import 'package:doan/resources/configs/config.dart';
-import 'package:doan/views/intro/welcome.dart';
 import 'package:flutter/material.dart';
 
 class IntroPage extends StatefulWidget {
@@ -16,57 +14,40 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          const SizedBox(
-            height: 120,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(35),
-            child: logo,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(50),
-            child: btnStart(context),
-          )
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width / 10),
+              child: Image.asset(Images.Logo),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.home);
+              },
+              child: const Text(
+                'Start',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size((MediaQuery.of(context).size.width / 1.5),
+                    (MediaQuery.of(context).size.height / 15)),
+                primary: Colors.blue,
+                onPrimary: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                  //backgroundColor: Colors.blue,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
-}
-
-Widget logo = Stack(
-  children: [
-    Image.asset(Images.Logo),
-  ],
-);
-
-Widget btnStart(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(30, 0, 30, 20),
-    child: ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Welcome()),
-        );
-      },
-      child: const Text(
-        'Start',
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.white,
-        ),
-      ),
-      style: ElevatedButton.styleFrom(
-        minimumSize: const Size(355, 40),
-        primary: Colors.blue,
-        onPrimary: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(32.0),
-          //backgroundColor: Colors.blue,
-        ),
-      ),
-    ),
-  );
 }

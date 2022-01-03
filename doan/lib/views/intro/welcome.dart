@@ -1,5 +1,9 @@
-import 'package:doan/resources/configs/image.dart';
+
+import 'dart:async';
+
+import 'package:doan/resources/configs/config.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -10,43 +14,46 @@ class Welcome extends StatefulWidget {
 
 // ignore: camel_case_types
 class _WelcomeState extends State<Welcome> {
+
+  Future<bool> isFirstTime() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var isFirstTime = pref.getBool(firstTime);
+    if (isFirstTime != null && !isFirstTime) {
+      pref.setBool(firstTime, false);
+      return false;
+    } else {
+      pref.setBool(firstTime, false);
+      return true;
+    }
+  }
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), () {
+      isFirstTime().then((isFirstTime) {
+        isFirstTime
+            ? Navigator.pushNamed(context, Routes.intro)
+            : Navigator.pushNamed(context, Routes.home);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          const SizedBox(
-            height: 120,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(35),
-            child: logo,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(50),
-            child: txtWelcome,
-          )
-        ],
-      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width / 10),
+              child: Image.asset(Images.Logo),
+            )
+          ],
+    ),
+      )
     );
   }
 }
-
-Widget logo = Stack(
-  children: [
-    Image.asset(Images.Logo),
-  ],
-);
-Widget txtWelcome = Column(
-  children: const [
-    Padding(padding: EdgeInsets.only(left: 260)),
-    Text(
-      "Welcome to app",
-      style: TextStyle(
-        fontSize: 22,
-        color: Colors.blue,
-      ),
-    ),
-  ],
-);

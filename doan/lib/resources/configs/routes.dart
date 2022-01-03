@@ -1,6 +1,8 @@
-import 'package:doan/views/Login/login.dart';
+
 import 'package:doan/views/SignUp/signup.dart';
+import 'package:doan/views/home/homepage.dart';
 import 'package:doan/views/intro/intro.dart';
+import 'package:doan/views/intro/welcome.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -8,6 +10,7 @@ class Routes {
   static const String home = "/home";
   static const String  signup= "/signup";
   static const String  intro= "/intro";
+  static const String  wellcom= "/wellcome";
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -15,7 +18,7 @@ class Routes {
     case home:
       return MaterialPageRoute(
         builder: (context) {
-          return LoginPage();
+          return homepage();
         },
         fullscreenDialog: true,
       );
@@ -23,6 +26,13 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) {
             return IntroPage();
+          },
+          fullscreenDialog: true,
+        );
+      case wellcom:
+        return MaterialPageRoute(
+          builder: (context) {
+            return Welcome();
           },
           fullscreenDialog: true,
         );
