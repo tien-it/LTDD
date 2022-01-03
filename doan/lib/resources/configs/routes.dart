@@ -1,6 +1,6 @@
 
 import 'package:doan/views/SignUp/signup.dart';
-import 'package:doan/views/home/homepage.dart';
+import 'package:doan/views/home/page/homepage.dart';
 import 'package:doan/views/intro/intro.dart';
 import 'package:doan/views/intro/welcome.dart';
 import 'package:flutter/material.dart';

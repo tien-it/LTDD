@@ -1,7 +1,7 @@
 
-import 'package:doan/resources/configs/config.dart';
-import 'package:doan/views/home/carousel_loading.dart';
-import 'package:flutter/foundation.dart';
+
+import 'package:doan/data_sources/app/appdata.dart';
+import 'package:doan/views/home/widget/carousel_loading.dart';
 import 'package:flutter/material.dart';
 
 class homepage extends StatefulWidget {
@@ -15,7 +15,9 @@ class _homepageState extends State<homepage> {
   var activeTab = 0;
   var menu = 0;
   var underline = 0;
+  var searchtxt =TextEditingController();
   AppBar? appbar = null;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -26,130 +28,15 @@ class _homepageState extends State<homepage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         bottomNavigationBar: getFooter(),
-        appBar: getAppBar(),
+        appBar: getAppBar(activeTab , searchtxt),
         body: getBody(),
       ),
     );
   }
 
-  List btnProType = [
-    {"img": MyIcons.seater_sofa , "name": "Nội thất"},
-    {"img": MyIcons.home_detor, "name": "Trang trí nhà cửa"},
-    {"img": MyIcons.bath, "name": "Đồ dùng,-phòng tắm"},
-    {"img": MyIcons.kitchen, "name": "Đồ dùng nhà bếp,phòng ăn"},
-    {
-      "img": MyIcons.electrical,
-      "name": "Đồ dùng nhà bếp,phòng ăn"
-    },
-    {"img": MyIcons.double_bed, "name": "Điện tử"},
-    {"img": MyIcons.coupon, "name": "Vourcher"},
-    {"img": MyIcons.more, "name": "Xem thêm"},
-  ];
-  List itemTab = [
-    {"icon": Icons.home, "size": 28.0},
-    {"icon": Icons.favorite, "size": 28.0},
-    {"icon": Icons.notifications, "size": 28.0},
-    {"icon": Icons.person, "size": 30.0},
-  ];
-  List itemPage = [
-    {"title": "Trang Chủ"},
-    {"title": "Flash Sale"},
-    {"title": "Deal Hot"},
-    {"title": "Mã giảm giá"},
-  ];
-  getAppBar() {
-    switch (activeTab) {
-      case 0:
-        break;
-      case 1:
-        break;
-      case 2:
-        return AppBar(
-          elevation: 0.8,
-          backgroundColor: Colors.white,
-          title: const Align(
-            child: Text(
-              "Thông báo",
-              style: TextStyle(color: Colors.black),
-            ),
-            alignment: Alignment.center,
-          ),
-        );
-      case 3:
-        return AppBar(
-          elevation: 0.8,
-          backgroundColor: Colors.white,
-          title: const Align(
-            child: Text(
-              "Cá nhân",
-              style: TextStyle(color: Colors.black),
-            ),
-            alignment: Alignment.center,
-          ),
-        );
-
-      default:
-    }
-  }
-
   getBody() {
     return ListView(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 10, top: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.menu,
-                      size: 35,
-                    )),
-              ),
-              Container(
-                padding: const EdgeInsets.only(top: 10),
-                width: 280,
-                height: 50,
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Tìm kiếm trong shop',
-                    prefixIcon: const Icon(Icons.search, size: 30),
-                    filled: true,
-                    fillColor: Colors.grey.shade200,
-                    contentPadding: const EdgeInsets.all(15),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Colors.grey.shade200,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.shopping_cart,
-                      size: 35,
-                    )),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
         Padding(
           padding: const EdgeInsets.only(left: 20),
           child: Row(
@@ -161,7 +48,7 @@ class _homepageState extends State<homepage> {
                     onPressed: () {
                       setState(() {});
                     },
-                    child: _categoryItem(),
+                    child: categoryItem(),
                   ),
                 ],
               )
@@ -180,7 +67,7 @@ class _homepageState extends State<homepage> {
     );
   }
 
-  Widget _categoryItem() {
+  Widget categoryItem() {
     return Padding(
       padding: const EdgeInsets.only(left: 0),
       child: Row(
@@ -227,7 +114,6 @@ class _homepageState extends State<homepage> {
       ),
     );
   }
-
   Widget getFooter() {
     return Container(
       height: 60,
@@ -265,7 +151,6 @@ class _homepageState extends State<homepage> {
       ],
     );
   }
-
   Widget _productType() {
     return Center(
       child: Wrap(
@@ -307,6 +192,138 @@ class _homepageState extends State<homepage> {
           )
         ]),
       )),
+    );
+  }
+  Widget searchWidget( TextEditingController searchtxt) {
+    return TextField(
+      decoration: InputDecoration(
+          hintText: 'Tìm kiếm trong shop',
+          prefixIcon: const Icon(Icons.search, size: 30),
+          filled: true,
+          fillColor: Colors.grey.shade200,
+          contentPadding: const EdgeInsets.all(15),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(
+              color: Colors.grey,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(
+              color: Colors.grey.shade200,
+            ),
+          ),
+          suffixIcon:
+          searchtxt.text !="" ?InkWell(
+              onTap: () { setState(() {
+                searchtxt.text ="";
+              }); },
+              child: const Icon(Icons.close)):const SizedBox()
+      ),
+      controller: searchtxt,
+      onChanged: (_){
+        setState(() {
+
+        });
+      },
+    );
+  }
+  getAppBar( var activeTab, TextEditingController searchtxt) {
+
+    switch (activeTab) {
+      case 0:
+      //home
+        return home_appbar(searchtxt);
+      case 1:
+      //favorite
+        return favorite_appbar();
+      case 2:
+      //notification
+        return notifivation_appbar();
+      case 3:
+      //account
+        return user_appbar();
+      default:
+    }
+  }
+  Widget home_appbar(TextEditingController searchtxt){
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 0.8,
+      backgroundColor: Colors.white,
+      title: searchWidget(searchtxt),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.shopping_cart,
+            size: 25,
+            color: Colors.pinkAccent,
+          ),
+          splashRadius: 25,
+        ),
+      ],
+    );
+  }
+//favorite appBar
+  Widget favorite_appbar(){
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 0.8,
+      backgroundColor: Colors.white,
+      title: const Align(
+        child: Text(
+          "Thông báo",
+          style: TextStyle(color: Colors.black),
+        ),
+        alignment: Alignment.center,
+      ),
+    );
+  }
+//notification appBar
+  Widget notifivation_appbar(){
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 0.8,
+      backgroundColor: Colors.white,
+      title: const Align(
+        child: Text(
+          "Thông báo",
+          style: TextStyle(color: Colors.black),
+        ),
+        alignment: Alignment.center,
+      ),
+    );
+  }
+//user appBar
+  Widget user_appbar(){
+    return
+      AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0.8,
+        backgroundColor: Colors.white,
+        title: const Align(
+          child: Text(
+            "My Account",
+            style: TextStyle(color: Colors.black),
+          ),
+          alignment: Alignment.center,
+        ),
+      );
+  }
+  Widget default_appbar(){
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 0.8,
+      backgroundColor: Colors.white,
+      title: const Align(
+        child: Text(
+          "Null",
+          style: TextStyle(color: Colors.black),
+        ),
+        alignment: Alignment.center,
+      ),
     );
   }
 }
