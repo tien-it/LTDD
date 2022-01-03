@@ -1,4 +1,4 @@
-import 'package:doan/views/trangchu/carousel_loading.dart';
+import 'package:doan/views/home/carousel_loading.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +32,7 @@ class _homepageState extends State<homepage> {
 
   List btnProType = [
     {"img": "icons/icon/seater-sofa.png", "name": "Nội thất"},
-    {"img": "icons/icon/home-decor.png", "name": "Trang trí nhà cửa"},
+    {"img": "icons/icon/homee-decor.png", "name": "Trang trí nhà cửa"},
     {"img": "icons/icon/bath.png", "name": "Đồ dùng,-phòng tắm"},
     {"img": "icons/icon/kitchen.png", "name": "Đồ dùng nhà bếp,phòng ăn"},
     {
@@ -73,7 +73,6 @@ class _homepageState extends State<homepage> {
             alignment: Alignment.center,
           ),
         );
-        break;
       case 3:
         return AppBar(
           elevation: 0.8,
@@ -86,7 +85,6 @@ class _homepageState extends State<homepage> {
             alignment: Alignment.center,
           ),
         );
-        break;
 
       default:
     }

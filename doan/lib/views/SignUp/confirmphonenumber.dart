@@ -1,3 +1,4 @@
+import 'package:doan/resources/configs/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -112,9 +113,8 @@ Widget buttonconfrim(BuildContext context) {
     padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
     child: ElevatedButton(
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const CreatePassPage()),
+        Navigator.pushNamed(
+          context,Routes.home
         );
       },
       child: const Text(

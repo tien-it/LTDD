@@ -1,10 +1,15 @@
 import 'package:doan/views/Login/login.dart';
 import 'package:doan/views/SignUp/signup.dart';
+import 'package:doan/views/intro/intro.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
+
   static const String home = "/home";
   static const String  signup= "/signup";
+  static const String  intro= "/intro";
+
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
     case home:
@@ -14,6 +19,13 @@ class Routes {
         },
         fullscreenDialog: true,
       );
+      case intro:
+        return MaterialPageRoute(
+          builder: (context) {
+            return IntroPage();
+          },
+          fullscreenDialog: true,
+        );
       case signup:
         return MaterialPageRoute(
           builder: (context) {

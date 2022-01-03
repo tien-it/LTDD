@@ -1,14 +1,15 @@
+import 'package:doan/resources/configs/image.dart';
 import 'package:flutter/material.dart';
 
-class welcome extends StatefulWidget {
-  const welcome({Key? key}) : super(key: key);
+class Welcome extends StatefulWidget {
+  const Welcome({Key? key}) : super(key: key);
 
   @override
-  _welcomeState createState() => _welcomeState();
+  _WelcomeState createState() => _WelcomeState();
 }
 
 // ignore: camel_case_types
-class _welcomeState extends State<welcome> {
+class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +35,7 @@ class _welcomeState extends State<welcome> {
 
 Widget logo = Stack(
   children: [
-    Image.asset(
-      "icons/logo02.jpg",
-    ),
+    Image.asset(Images.Logo),
   ],
 );
 Widget txtWelcome = Column(

@@ -1,16 +1,17 @@
-import 'package:doan/views/Login/login.dart';
-import 'package:doan/views/home/welcome.dart';
+
+import 'package:doan/resources/configs/config.dart';
+import 'package:doan/views/intro/welcome.dart';
 import 'package:flutter/material.dart';
 
-class pageLoading extends StatefulWidget {
-  const pageLoading({Key? key}) : super(key: key);
+class IntroPage extends StatefulWidget {
+  const IntroPage({Key? key}) : super(key: key);
 
   @override
-  _pageLoadingState createState() => _pageLoadingState();
+  _IntroPageState createState() => _IntroPageState();
 }
 
 // ignore: camel_case_types
-class _pageLoadingState extends State<pageLoading> {
+class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +37,7 @@ class _pageLoadingState extends State<pageLoading> {
 
 Widget logo = Stack(
   children: [
-    Image.asset(
-      "icons/logo02.jpg",
-    ),
+    Image.asset(Images.Logo),
   ],
 );
 
@@ -49,7 +48,7 @@ Widget btnStart(BuildContext context) {
       onPressed: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const welcome()),
+          MaterialPageRoute(builder: (context) => const Welcome()),
         );
       },
       child: const Text(

@@ -62,7 +62,7 @@ class _AccountPageState extends State<AccountPage> {
                 children: [
 
                   IconButton(onPressed: (){
-                    Navigator.pushNamed(context, '/donhang');
+                    Navigator.pushNamed(context, '');
                   },
                     icon: const Icon(Icons.account_balance_wallet_outlined),
                     iconSize: 30,

@@ -60,25 +60,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - icons/logo.jpg
-    - icons/logo02.jpg
-    - icons/facebook.png
-    - icons/icons8-google-48.png
-    - icons/icons8-zalo-48.png
-    - icons/avatar.png
-    - icons/momo.png
-    - icons/momo.jpg
-    - icons/line.jpg
-    - icons/kesach.jpg
-    - icons/facebook.png
-    - icons/icon/seater-sofa.png
-    - icons/icon/home-decor.png
-    - icons/icon/bath.png
-    - icons/icon/kitchen.png
-    - icons/icon/electrical-appliance.png
-    - icons/icon/double-bed.png
-    - icons/icon/coupon.png
-    - icons/icon/more.png
+    - assets/icons/
 
   #   - images/a_dot_ham.jpeg
 
@@ -96,7 +78,7 @@ flutter:
   fonts:
     - family: MeriendaOne
       fonts:
-        - asset: font/MeriendaOne-Regular.ttf
+        - asset: assets/font/MeriendaOne-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

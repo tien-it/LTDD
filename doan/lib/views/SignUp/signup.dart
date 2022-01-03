@@ -33,7 +33,6 @@ class _SignUpPageState extends State<SignUpPage> {
               style: TextStyle(
               fontSize: 20,
               ),
-              alignment: Alignment.center,
             ),
             alignment: Alignment.centerLeft,
           ),                
@@ -56,29 +55,7 @@ class _SignUpPageState extends State<SignUpPage> {
               buttoncontineu(context),
             ]
           ),
-          body: SingleChildScrollView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  textphone,
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  textdescription,
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  textfieldPhone,
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  buttoncontineu(context),
-                ]),
-          )),
+      ))
     );
   }
 }
