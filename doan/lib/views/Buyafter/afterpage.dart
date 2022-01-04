@@ -2,13 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SawPage extends StatefulWidget {
-  const SawPage({Key? key}) : super(key: key);
+class BuyAfterPage extends StatefulWidget {
+  const BuyAfterPage({Key? key}) : super(key: key);
   @override
-  State<SawPage> createState() => _SawPageState();
+  State<BuyAfterPage> createState() => _BuyAfterPageState();
 }
 
-class _SawPageState extends State<SawPage> {
+class _BuyAfterPageState extends State<BuyAfterPage> {
   @override
   Widget build(BuildContext context){
     return Scaffold(          
@@ -21,7 +21,7 @@ class _SawPageState extends State<SawPage> {
           ),
           title: const Align(
             child: Text(
-              'Đã xem',
+              'Mua sau',
               style: TextStyle(
               fontSize: 22,
               ),
@@ -41,7 +41,7 @@ class _SawPageState extends State<SawPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            saw(context),
+            BuyAfter(context),
           ],
         ),
       ),            
@@ -49,7 +49,7 @@ class _SawPageState extends State<SawPage> {
   }
 }
 
-Widget saw(BuildContext context){
+Widget BuyAfter(BuildContext context){
   return Stack(
     children:<Widget> [
       Container(
@@ -125,7 +125,7 @@ Widget saw(BuildContext context){
            fontSize: 20, 
          ),
         ),
-      ),  
+      ),     
     ],
   );
 }
