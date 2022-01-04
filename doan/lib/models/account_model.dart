@@ -55,14 +55,14 @@ class taikhoan {
         updated = json['NGAYSUA'],
         deleted = json['NGAYXOA'] ;
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = <String, dynamic>{};
-  //   data['id_customer'] = id;
-  //   data['name'] = name;
-  //   data['username'] = username;
-  //   data['email'] = email;
-  //   data['address'] = address;
-  //   data['phone'] = phone;
-  //   return data;
-  // }
+   Map<String, dynamic> toJson() {
+     final Map<String, dynamic> data = <String, dynamic>{};
+     data['id_customer'] = id;
+     data['name'] = name;
+     data['username'] = username;
+     data['email'] = email;
+     data['address'] = address;
+     data['phone'] = phone;
+     return data;
+   }
 }

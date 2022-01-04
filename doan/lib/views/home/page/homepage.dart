@@ -2,6 +2,8 @@
 
 import 'package:doan/data_sources/app/appdata.dart';
 import 'package:doan/views/home/widget/carousel_loading.dart';
+import 'package:doan/views/home/widget/searchWidget.dart';
+import 'package:doan/views/user/account_page.dart';
 import 'package:flutter/material.dart';
 
 class homepage extends StatefulWidget {
@@ -15,7 +17,6 @@ class _homepageState extends State<homepage> {
   var activeTab = 0;
   var menu = 0;
   var underline = 0;
-  var searchtxt =TextEditingController();
   AppBar? appbar = null;
 
   @override
@@ -28,13 +29,30 @@ class _homepageState extends State<homepage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         bottomNavigationBar: getFooter(),
-        appBar: getAppBar(activeTab , searchtxt),
-        body: getBody(),
+        appBar: getAppBar(activeTab),
+        body: getBody(activeTab),
       ),
     );
   }
+  getBody( var activeTab) {
 
-  getBody() {
+    switch (activeTab) {
+      case 0:
+      //home
+        return homepage();
+      case 1:
+      //favorite
+        return favorite_appbar();
+      case 2:
+      //notification
+        return notifivation_appbar();
+      case 3:
+      //account
+        return AccountPage();
+      default:
+    }
+  }
+  homepage() {
     return ListView(
       children: [
         Padding(
@@ -67,53 +85,6 @@ class _homepageState extends State<homepage> {
     );
   }
 
-  Widget categoryItem() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: List.generate(
-          itemPage.length,
-          (index) => Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    setState(() {
-                      menu = index;
-                    });
-                  },
-                  child: Column(
-                    children: [
-                      Text(
-                        itemPage[index]['title'],
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: menu == index ? Colors.blue : Colors.grey,
-                          //decorationStyle: TextDecorationStyle.double,
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 5),
-                        height: 3,
-                        width: 70,
-                        decoration: menu == index
-                            ? BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(10),
-                              )
-                            : const BoxDecoration(),
-                      ),
-                    ],
-                  )),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
   Widget getFooter() {
     return Container(
       height: 60,
@@ -127,20 +98,19 @@ class _homepageState extends State<homepage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: List.generate(
                 itemTab.length,
-                (index) => IconButton(
-                      onPressed: () {
-                        setState(() {
-                          activeTab = index;
-                        });
-                      },
-                      icon: Icon(itemTab[index]['icon'],
-                          size: itemTab[index]['size']),
-                      color: activeTab == index ? Colors.blue : Colors.black,
-                    ))),
+                    (index) => IconButton(
+                  onPressed: () {
+                    setState(() {
+                      activeTab = index;
+                    });
+                  },
+                  icon: Icon(itemTab[index]['icon'],
+                      size: itemTab[index]['size']),
+                  color: activeTab == index ? Colors.blue : Colors.black,
+                ))),
       ),
     );
   }
-
   Widget _carousel() {
     return Column(
       children: const [
@@ -194,47 +164,13 @@ class _homepageState extends State<homepage> {
       )),
     );
   }
-  Widget searchWidget( TextEditingController searchtxt) {
-    return TextField(
-      decoration: InputDecoration(
-          hintText: 'Tìm kiếm trong shop',
-          prefixIcon: const Icon(Icons.search, size: 30),
-          filled: true,
-          fillColor: Colors.grey.shade200,
-          contentPadding: const EdgeInsets.all(15),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: const BorderSide(
-              color: Colors.grey,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(
-              color: Colors.grey.shade200,
-            ),
-          ),
-          suffixIcon:
-          searchtxt.text !="" ?InkWell(
-              onTap: () { setState(() {
-                searchtxt.text ="";
-              }); },
-              child: const Icon(Icons.close)):const SizedBox()
-      ),
-      controller: searchtxt,
-      onChanged: (_){
-        setState(() {
 
-        });
-      },
-    );
-  }
-  getAppBar( var activeTab, TextEditingController searchtxt) {
+  getAppBar( var activeTab) {
 
     switch (activeTab) {
       case 0:
       //home
-        return home_appbar(searchtxt);
+        return home_appbar();
       case 1:
       //favorite
         return favorite_appbar();
@@ -247,12 +183,12 @@ class _homepageState extends State<homepage> {
       default:
     }
   }
-  Widget home_appbar(TextEditingController searchtxt){
+  Widget home_appbar(){
     return AppBar(
       automaticallyImplyLeading: false,
       elevation: 0.8,
       backgroundColor: Colors.white,
-      title: searchWidget(searchtxt),
+      title: SearchWidget(),
       actions: [
         IconButton(
           onPressed: () {},
@@ -323,6 +259,54 @@ class _homepageState extends State<homepage> {
           style: TextStyle(color: Colors.black),
         ),
         alignment: Alignment.center,
+      ),
+    );
+  }
+
+  categoryItem() {
+    return  Padding(
+      padding: const EdgeInsets.only(left: 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(
+          itemPage.length,
+              (index) => Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      menu = index;
+                    });
+                  },
+                  child: Column(
+                    children: [
+                      Text(
+                        itemPage[index]['title'],
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: menu == index ? Colors.blue : Colors.grey,
+                          //decorationStyle: TextDecorationStyle.double,
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        height: 3,
+                        width: 70,
+                        decoration: menu == index
+                            ? BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(10),
+                        )
+                            : const BoxDecoration(),
+                      ),
+                    ],
+                  )),
+            ],
+          ),
+        ),
       ),
     );
   }
