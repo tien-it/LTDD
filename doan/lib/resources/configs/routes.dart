@@ -1,3 +1,8 @@
+import 'package:doan/views/AddressBook/addresspage.dart';
+import 'package:doan/views/BillInfomation/billinforpage.dart';
+import 'package:doan/views/Buyafter/afternullpage.dart';
+import 'package:doan/views/Buyafter/afterpage.dart';
+import 'package:doan/views/Saw/sawpage.dart';
 import 'package:doan/views/SignUp/signup.dart';
 import 'package:doan/views/home/page/homepage.dart';
 import 'package:doan/views/intro/intro.dart';
@@ -10,6 +15,7 @@ import 'package:doan/views/user/account/sua_ngaysinh.dart';
 import 'package:doan/views/user/account/sua_sodienthoai.dart';
 import 'package:doan/views/user/account/sua_tendangnhap.dart';
 import 'package:doan/views/user/account/thongtincanhan.dart';
+import 'package:doan/views/user/order/order.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -25,6 +31,11 @@ class Routes {
   static const String change_birthday = "/change_birthday";
   static const String change_phone = "/change_phone";
   static const String change_username = "/change_username";
+  static const String buylate = "/buylate";
+  static const String history = "/history";
+  static const String address = "/address";
+  static const String paymentinfo = "/paymentinfo";
+  static const String order = "/order";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -49,10 +60,45 @@ class Routes {
           },
           fullscreenDialog: true,
         );
+      case buylate:
+        return MaterialPageRoute(
+          builder: (context) {
+            return BuyAfterPage();
+          },
+          fullscreenDialog: true,
+        );
+      case address:
+        return MaterialPageRoute(
+          builder: (context) {
+            return AddressPage();
+          },
+          fullscreenDialog: true,
+        );
       case signup:
         return MaterialPageRoute(
           builder: (context) {
             return SignUpPage();
+          },
+          fullscreenDialog: true,
+        );
+      case history:
+        return MaterialPageRoute(
+          builder: (context) {
+            return SawPage();
+          },
+          fullscreenDialog: true,
+        );
+      case paymentinfo:
+        return MaterialPageRoute(
+          builder: (context) {
+            return BillInfoPage();
+          },
+          fullscreenDialog: true,
+        );
+      case order:
+        return MaterialPageRoute(
+          builder: (context) {
+            return DonHang();
           },
           fullscreenDialog: true,
         );

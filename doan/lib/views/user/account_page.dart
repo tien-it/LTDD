@@ -69,7 +69,7 @@ class _AccountPageState extends State<AccountPage> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context,'');
+                          Navigator.pushNamed(context,Routes.order);
                         },
                         icon: const Icon(Icons.account_balance_wallet_outlined),
                         iconSize: 30,
@@ -81,7 +81,9 @@ class _AccountPageState extends State<AccountPage> {
                 Column(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context,Routes.order);
+                        },
                         icon: const Icon(Icons.archive_outlined),
                         iconSize: 30,
                         color: Colors.blue,
@@ -93,7 +95,9 @@ class _AccountPageState extends State<AccountPage> {
                 Column(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context,Routes.order);
+                        },
                         icon: const Icon(Icons.directions_car_filled_outlined),
                         iconSize: 30,
                         color: Colors.blue,
@@ -137,7 +141,9 @@ class _AccountPageState extends State<AccountPage> {
                 Column(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.history);
+                        },
                         icon: const Icon(Icons.visibility),
                         iconSize: 30,
                         color: Colors.blue,
@@ -161,7 +167,9 @@ class _AccountPageState extends State<AccountPage> {
                 Column(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.buylate);
+                        },
                         icon: const Icon(Icons.query_builder),
                         iconSize: 30,
                         color: Colors.blue,
@@ -217,7 +225,9 @@ class _AccountPageState extends State<AccountPage> {
                 Column(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.paymentinfo);
+                        },
                         icon: const Icon(Icons.payment),
                         iconSize: 30,
                         color: Colors.blue,
@@ -229,7 +239,9 @@ class _AccountPageState extends State<AccountPage> {
                 Column(
                   children: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, Routes.address);
+                        },
                         icon: const Icon(Icons.room),
                         iconSize: 30,
                         color: Colors.blue,

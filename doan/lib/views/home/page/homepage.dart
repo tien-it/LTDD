@@ -1,6 +1,5 @@
-
-
 import 'package:doan/data_sources/app/appdata.dart';
+import 'package:doan/views/Love/lovepage.dart';
 import 'package:doan/views/home/widget/carousel_loading.dart';
 import 'package:doan/views/home/widget/searchWidget.dart';
 import 'package:doan/views/user/account_page.dart';
@@ -34,24 +33,25 @@ class _homepageState extends State<homepage> {
       ),
     );
   }
-  getBody( var activeTab) {
 
+  getBody(var activeTab) {
     switch (activeTab) {
       case 0:
-      //home
+        //home
         return homepage();
       case 1:
-      //favorite
-        return favorite_appbar();
+        //favorite
+        return LovePage();
       case 2:
-      //notification
+        //notification
         return notifivation_appbar();
       case 3:
-      //account
+        //account
         return AccountPage();
       default:
     }
   }
+
   homepage() {
     return ListView(
       children: [
@@ -98,19 +98,20 @@ class _homepageState extends State<homepage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: List.generate(
                 itemTab.length,
-                    (index) => IconButton(
-                  onPressed: () {
-                    setState(() {
-                      activeTab = index;
-                    });
-                  },
-                  icon: Icon(itemTab[index]['icon'],
-                      size: itemTab[index]['size']),
-                  color: activeTab == index ? Colors.blue : Colors.black,
-                ))),
+                (index) => IconButton(
+                      onPressed: () {
+                        setState(() {
+                          activeTab = index;
+                        });
+                      },
+                      icon: Icon(itemTab[index]['icon'],
+                          size: itemTab[index]['size']),
+                      color: activeTab == index ? Colors.blue : Colors.black,
+                    ))),
       ),
     );
   }
+
   Widget _carousel() {
     return Column(
       children: const [
@@ -121,6 +122,7 @@ class _homepageState extends State<homepage> {
       ],
     );
   }
+
   Widget _productType() {
     return Center(
       child: Wrap(
@@ -165,25 +167,25 @@ class _homepageState extends State<homepage> {
     );
   }
 
-  getAppBar( var activeTab) {
-
+  getAppBar(var activeTab) {
     switch (activeTab) {
       case 0:
-      //home
+        //home
         return home_appbar();
       case 1:
-      //favorite
+        //favorite
         return favorite_appbar();
       case 2:
-      //notification
+        //notification
         return notifivation_appbar();
       case 3:
-      //account
+        //account
         return user_appbar();
       default:
     }
   }
-  Widget home_appbar(){
+
+  Widget home_appbar() {
     return AppBar(
       automaticallyImplyLeading: false,
       elevation: 0.8,
@@ -202,53 +204,62 @@ class _homepageState extends State<homepage> {
       ],
     );
   }
+
 //favorite appBar
-  Widget favorite_appbar(){
+  Widget favorite_appbar() {
     return AppBar(
       automaticallyImplyLeading: false,
       elevation: 0.8,
-      backgroundColor: Colors.white,
       title: const Align(
-        child: Text(
-          "Thông báo",
-          style: TextStyle(color: Colors.black),
-        ),
-        alignment: Alignment.center,
-      ),
-    );
-  }
-//notification appBar
-  Widget notifivation_appbar(){
-    return AppBar(
-      automaticallyImplyLeading: false,
-      elevation: 0.8,
-      backgroundColor: Colors.white,
-      title: const Align(
-        child: Text(
-          "Thông báo",
-          style: TextStyle(color: Colors.black),
-        ),
-        alignment: Alignment.center,
-      ),
-    );
-  }
-//user appBar
-  Widget user_appbar(){
-    return
-      AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0.8,
-        backgroundColor: Colors.white,
-        title: const Align(
-          child: Text(
-            "My Account",
-            style: TextStyle(color: Colors.black),
+        child: Text('Yêu thích',
+          style: TextStyle(
+            fontSize: 22,
+            color: Colors.black
           ),
-          alignment: Alignment.center,
         ),
-      );
+        alignment: Alignment.center,
+      ),
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.white,
+      actions: <Widget>[
+        IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart, color: Colors.pinkAccent,))
+      ],
+    );
   }
-  Widget default_appbar(){
+
+//notification appBar
+  Widget notifivation_appbar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 0.8,
+      backgroundColor: Colors.white,
+      title: const Align(
+        child: Text(
+          "Thông báo",
+          style: TextStyle(color: Colors.black),
+        ),
+        alignment: Alignment.center,
+      ),
+    );
+  }
+
+//user appBar
+  Widget user_appbar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      elevation: 0.8,
+      backgroundColor: Colors.white,
+      title: const Align(
+        child: Text(
+          "My Account",
+          style: TextStyle(color: Colors.black),
+        ),
+        alignment: Alignment.center,
+      ),
+    );
+  }
+
+  Widget default_appbar() {
     return AppBar(
       automaticallyImplyLeading: false,
       elevation: 0.8,
@@ -264,14 +275,14 @@ class _homepageState extends State<homepage> {
   }
 
   categoryItem() {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.only(left: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(
           itemPage.length,
-              (index) => Column(
+          (index) => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextButton(
@@ -297,9 +308,9 @@ class _homepageState extends State<homepage> {
                         width: 70,
                         decoration: menu == index
                             ? BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(10),
-                        )
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(10),
+                              )
                             : const BoxDecoration(),
                       ),
                     ],
