@@ -1,4 +1,5 @@
 import 'package:doan/data_sources/app/appdata.dart';
+import 'package:doan/resources/configs/config.dart';
 import 'package:doan/views/Love/lovepage.dart';
 import 'package:doan/views/home/widget/carousel_loading.dart';
 import 'package:doan/views/home/widget/searchWidget.dart';
@@ -69,7 +70,7 @@ class _homepageState extends State<homepage> {
                     child: categoryItem(),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
@@ -81,6 +82,390 @@ class _homepageState extends State<homepage> {
           padding: const EdgeInsets.all(5),
           child: _productType(),
         ),
+        Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                'Phòng Sách',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'all',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    color: Colors.grey,
+                    size: 16,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          child: Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 5,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(Images.KeSach),
+                        fit: BoxFit.fitWidth)),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  child: Positioned(
+                    bottom: 20,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Kệ Sách Đứng',
+                            style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Đến xem',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ))
+            ],
+          ),
+        ),
+        const SizedBox(height: 40,),
+        SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(categories.length, (index) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: Container(
+                    width: 180,
+                    height: 220,
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      categories[index].imgUrl.toString()),
+                                  fit: BoxFit.cover),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                        Positioned(
+                          bottom: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              categories[index].title.toString(),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              }),
+            )),
+        Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                'Phòng Ngủ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'all',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    color: Colors.grey,
+                    size: 16,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          child: Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 5,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage('https://salt.tikicdn.com/cache/w1200/ts/product/07/98/df/544ad89036ed33da95246bdfcda8b872.jpg'),
+                        fit: BoxFit.fitWidth)),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  child: Positioned(
+                    bottom: 20,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Giường Đơn',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Đến xem',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ))
+            ],
+          ),
+        ),
+        const SizedBox(height: 40,),
+        SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(phongngu.length, (index) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: Container(
+                    width: 180,
+                    height: 220,
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      phongngu[index].imgUrl.toString()),
+                                  fit: BoxFit.cover),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                        Positioned(
+                          bottom: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              phongngu[index].title.toString(),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              }),
+            )),
+        Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                'Phòng Khách',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'all',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    color: Colors.grey,
+                    size: 16,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          child: Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 5,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage('https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png'),
+                        fit: BoxFit.fitWidth)),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  child: Positioned(
+                    bottom: 20,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Tủ Tivi',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Đến xem',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Colors.white,
+                                size: 18,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ))
+            ],
+          ),
+        ),
+        const SizedBox(height: 40,),
+        SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(phongngu.length, (index) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: Container(
+                    width: 180,
+                    height: 220,
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      phongkhach[index].imgUrl.toString()),
+                                  fit: BoxFit.cover),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                        Positioned(
+                          bottom: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              phongkhach[index].title.toString(),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              }),
+            ))
       ],
     );
   }
@@ -211,18 +596,21 @@ class _homepageState extends State<homepage> {
       automaticallyImplyLeading: false,
       elevation: 0.8,
       title: const Align(
-        child: Text('Yêu thích',
-          style: TextStyle(
-            fontSize: 22,
-            color: Colors.black
-          ),
+        child: Text(
+          'Yêu thích',
+          style: TextStyle(fontSize: 22, color: Colors.black),
         ),
         alignment: Alignment.center,
       ),
       backgroundColor: Colors.white,
       foregroundColor: Colors.white,
       actions: <Widget>[
-        IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart, color: Colors.pinkAccent,))
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.shopping_cart,
+              color: Colors.pinkAccent,
+            ))
       ],
     );
   }
@@ -321,4 +709,95 @@ class _homepageState extends State<homepage> {
       ),
     );
   }
+
+
 }
+
+class category {
+  String? title;
+  String? imgUrl;
+
+  category({this.title, this.imgUrl});
+}
+
+final List<category> categories = [
+  category(
+    title: 'Mới',
+    imgUrl:
+        'https://salt.tikicdn.com/cache/400x400/ts/product/79/16/50/bd2a98ea86bb9564a0ccb6db077130ab.jpg.webp',
+  ),
+  category(
+    title: 'Kệ Đứng',
+    imgUrl:
+        'https://salt.tikicdn.com/cache/w1200/ts/product/e0/d3/3b/c6845f3b7a36e94921609cf3abd86c9f.jpg',
+  ),
+  category(
+    title: 'Kệ Nằm',
+    imgUrl:
+        'https://salt.tikicdn.com/cache/400x400/ts/product/15/34/b4/0e39ca1785ee389d4d23fd9b6df3cab5.png.webp',
+  ),
+  category(
+    title: 'Kệ Mini',
+    imgUrl:
+        'https://salt.tikicdn.com/cache/400x400/ts/product/30/6f/f3/d436d13473481e3f3cee5928befbb1f3.jpg.webp',
+  ),
+  category(
+    title: 'Khác',
+    imgUrl:
+        'https://salt.tikicdn.com/cache/w1200/ts/product/b6/69/77/047718dda146161bbb897a6886cbaa19.jpg',
+  ),
+];
+final List<category> phongngu = [
+  category(
+    title: 'Mới',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/w1200/ts/product/33/79/07/1a9831f35807205ff38ca2fcfe5977bb.jpg',
+  ),
+  category(
+    title: 'Nệm',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/400x400/ts/product/09/6b/5b/e17a31fdf3015d3c54ea20c92e40dd3f.jpg.webp',
+  ),
+  category(
+    title: 'Giường',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/w1200/ts/product/70/99/b1/709900a5d81804546aef738b8dd84606.jpg',
+  ),
+  category(
+    title: 'Tủ Đầu Giuong',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/400x400/ts/product/f3/4f/57/dc33befbbc14f1a0f61cf4cdbf16a6a5.jpg.webp',
+  ),
+  category(
+    title: 'Đèn Ngủ',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/w1200/ts/product/60/22/26/5b3eb3cb986f22c461251290cd64b7c3.jpg',
+  ),
+];
+final List<category> phongkhach = [
+  category(
+    title: 'Mới',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/400x400/ts/product/c0/bd/84/c592a519cdd2e577dabf7857ef6623ac.jpg.webp',
+  ),
+  category(
+    title: 'Combo Bàn Ghế',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/400x400/ts/product/62/ab/43/fc3b8873821f931ed9eac3218f2c4485.jpg.webp',
+  ),
+  category(
+    title: 'Ấm trà',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/w1200/ts/product/2b/e7/bf/ec860e3914ea70cb0772ec4e44beed7c.jpg',
+  ),
+  category(
+    title: 'Tủ Giày',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/w1200/ts/product/6e/d9/cb/cd1b3a9a1b9d4d8e5756442de30f1f9e.jpg',
+  ),
+  category(
+    title: 'Khác',
+    imgUrl:
+    'https://salt.tikicdn.com/cache/400x400/ts/product/d5/77/67/703b496808c80995f97897076b343cda.jpg.webp',
+  ),
+];
