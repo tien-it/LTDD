@@ -10,8 +10,9 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-
+final sdt = TextEditingController();
 class _LoginPageState extends State<LoginPage> {
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 23),
+                padding: const EdgeInsets.only(top: 50),
                 child: imageHead,
               ),
               const SizedBox(
@@ -72,12 +73,13 @@ class _LoginPageState extends State<LoginPage> {
 
 Widget buttoncontineu(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.fromLTRB(30, 0, 30, 20),
+    padding: const EdgeInsets.fromLTRB(60, 0, 30, 20),
     child: ElevatedButton(
       onPressed: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(builder: (context) => const PassWordPage()),
+          '/password',
+          arguments: sdt.text,
         );
       },
       child: const Text(
@@ -98,7 +100,7 @@ Widget buttoncontineu(BuildContext context) {
 Widget imageHead = Stack(
   children: [
     Image.asset(
-      "icons/logo02.jpg",
+      "assets/icons/logo02.jpg",
     ),
     Positioned(
       top: 10,
@@ -135,19 +137,20 @@ Widget textlogin = Column(
   ],
 );
 
-Widget textPhone = const Padding(
-  padding: EdgeInsets.fromLTRB(30, 0, 30, 20),
+Widget textPhone = Padding(
+  padding:const  EdgeInsets.fromLTRB(30, 0, 30, 20),
   child: TextField(
     cursorColor: Colors.blue,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: 20,
     ),
-    decoration: InputDecoration(
+    decoration: const InputDecoration(
       hintText: "Số điện thoại",
     ),
     keyboardType: TextInputType.number,
     textInputAction: TextInputAction.done,
     maxLength: 10,
+    controller: sdt,   
   ),
 );
 
@@ -193,21 +196,21 @@ Widget iconLoginAnother = Container(
       IconButton(
         onPressed: () {},
         icon: Image.asset(
-          "icons/facebook.png",
+          "assets/icons/facebook.png",
         ),
         iconSize: 40,
       ),
       IconButton(
         onPressed: () {},
         icon: Image.asset(
-          "icons/icons8-google-48.png",
+          "assets/icons/icons8-google-48.png",
         ),
         iconSize: 40,
       ),
       IconButton(
         onPressed: () {},
         icon: Image.asset(
-          "icons/icons8-zalo-48.png",
+          "assets/icons/icons8-zalo-48.png",
         ),
         iconSize: 40,
       ),
