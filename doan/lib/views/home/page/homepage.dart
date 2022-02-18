@@ -1,10 +1,14 @@
 import 'package:doan/data_sources/app/appdata.dart';
+import 'package:doan/models/product.dart';
+import 'package:doan/presenters/home/bloc.dart';
+import 'package:doan/presenters/home/http_request.dart';
 import 'package:doan/resources/configs/config.dart';
 import 'package:doan/views/Love/lovepage.dart';
 import 'package:doan/views/home/widget/carousel_loading.dart';
 import 'package:doan/views/home/widget/searchWidget.dart';
 import 'package:doan/views/user/account_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
@@ -26,11 +30,14 @@ class _homepageState extends State<homepage> {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
       },
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        bottomNavigationBar: getFooter(),
-        appBar: getAppBar(activeTab),
-        body: getBody(activeTab),
+      child: BlocProvider(
+        create: (_)=>HomeBloc(),
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          bottomNavigationBar: getFooter(),
+          appBar: getAppBar(activeTab),
+          body: getBody(activeTab),
+        ),
       ),
     );
   }
@@ -52,422 +59,462 @@ class _homepageState extends State<homepage> {
       default:
     }
   }
+// /* home page */
+//   homepage() {
+//     return ListView(
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.only(left: 20),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Row(
+//                 children: [
+//                   TextButton(
+//                     onPressed: () {
+//                       setState(() {});
+//                     },
+//                     child: categoryItem(),
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//         Padding(
+//           padding: const EdgeInsets.all(0),
+//           child: _carousel(),
+//         ),
+//         Padding(
+//           padding: const EdgeInsets.all(5),
+//           child: _productType(),
+//         ),
+//         Padding(
+//           padding: const EdgeInsets.only(left: 15, right: 15),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: <Widget>[
+//              const  Padding(
+//                 padding: const EdgeInsets.only(bottom: 5 , top: 5),
+//                 child: Text(
+//                   'Phòng Sách',
+//                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+//                 ),
+//               ),
+//               Row(
+//                 children: <Widget>[
+//                   Text(
+//                     'all',
+//                     style: TextStyle(color: Colors.grey),
+//                   ),
+//                   SizedBox(
+//                     width: 5,
+//                   ),
+//                   Icon(
+//                     Icons.arrow_forward_ios_sharp,
+//                     color: Colors.grey,
+//                     size: 16,
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//         Container(
+//           child: Stack(
+//             children: [
+//               Container(
+//                 width: MediaQuery.of(context).size.width,
+//                 height: MediaQuery.of(context).size.height / 5,
+//                 decoration: BoxDecoration(
+//                     image: DecorationImage(
+//                         image: AssetImage(Images.KeSach),
+//                         fit: BoxFit.fitWidth)),
+//               ),
+//               Padding(
+//                   padding: const EdgeInsets.only(bottom: 5),
+//                   child: Positioned(
+//                     bottom: 20,
+//                     child: Padding(
+//                       padding: const EdgeInsets.only(left: 20),
+//                       child: Column(
+//                         crossAxisAlignment: CrossAxisAlignment.start,
+//                         children: [
+//                           Text(
+//                             'Kệ Sách Đứng',
+//                             style: TextStyle(
+//                                 fontSize: 25,
+//                                 color: Colors.white,
+//                                 fontWeight: FontWeight.bold),
+//                           ),
+//                           SizedBox(
+//                             height: 10,
+//                           ),
+//                           Row(
+//                             children: [
+//                               Text(
+//                                 'Đến xem',
+//                                 style: TextStyle(
+//                                     fontSize: 25,
+//                                     color: Colors.white,
+//                                     fontWeight: FontWeight.bold),
+//                               ),
+//                               SizedBox(
+//                                 width: 5,
+//                               ),
+//                               Icon(
+//                                 Icons.arrow_forward_ios,
+//                                 color: Colors.white,
+//                                 size: 18,
+//                               )
+//                             ],
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ))
+//             ],
+//           ),
+//         ),
+//         const SizedBox(height: 40,),
+//         SingleChildScrollView(
+//             scrollDirection: Axis.horizontal,
+//             child: Row(
+//               children: List.generate(categories.length, (index) {
+//                 return Padding(
+//                   padding: const EdgeInsets.only(left: 15),
+//                   child: Container(
+//                     width: 180,
+//                     height: 220,
+//                     child: Stack(
+//                       children: [
+//                         Container(
+//                           decoration: BoxDecoration(
+//                               image: DecorationImage(
+//                                   image: NetworkImage(
+//                                       categories[index].imgUrl.toString()),
+//                                   fit: BoxFit.cover),
+//                               borderRadius: BorderRadius.circular(5)),
+//                         ),
+//                         Container(
+//                           decoration: BoxDecoration(
+//                               color: Colors.black.withOpacity(0.1),
+//                               borderRadius: BorderRadius.circular(5)),
+//                         ),
+//                         Positioned(
+//                           bottom: 5,
+//                           child: Padding(
+//                             padding: const EdgeInsets.all(10.0),
+//                             child: Text(
+//                               categories[index].title.toString(),
+//                               style: const TextStyle(
+//                                   fontSize: 18,
+//                                   fontWeight: FontWeight.bold,
+//                                   color: Colors.white),
+//                             ),
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                 );
+//               }),
+//             )),
+//         Padding(
+//           padding: const EdgeInsets.only(left: 15, right: 15),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: <Widget>[
+//               Padding(
+//                 padding: const EdgeInsets.only(bottom: 5),
+//                 child: Text(
+//                   'Phòng Ngủ',
+//                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+//                 ),
+//               ),
+//               Row(
+//                 children: <Widget>[
+//                   Text(
+//                     'all',
+//                     style: TextStyle(color: Colors.grey),
+//                   ),
+//                   SizedBox(
+//                     width: 5,
+//                   ),
+//                   Icon(
+//                     Icons.arrow_forward_ios_sharp,
+//                     color: Colors.grey,
+//                     size: 16,
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//         Container(
+//           child: Stack(
+//             children: [
+//               Container(
+//                 width: MediaQuery.of(context).size.width,
+//                 height: MediaQuery.of(context).size.height / 5,
+//                 decoration: BoxDecoration(
+//                     image: DecorationImage(
+//                         image: NetworkImage('https://salt.tikicdn.com/cache/w1200/ts/product/07/98/df/544ad89036ed33da95246bdfcda8b872.jpg'),
+//                         fit: BoxFit.fitWidth)),
+//               ),
+//               Padding(
+//                   padding: const EdgeInsets.only(bottom: 5),
+//                   child: Positioned(
+//                     bottom: 20,
+//                     child: Padding(
+//                       padding: const EdgeInsets.only(left: 20),
+//                       child: Column(
+//                         crossAxisAlignment: CrossAxisAlignment.start,
+//                         children: [
+//                           Text(
+//                             'Giường Đơn',
+//                             style: TextStyle(
+//                                 fontSize: 20,
+//                                 color: Colors.white,
+//                                 fontWeight: FontWeight.bold),
+//                           ),
+//                           SizedBox(
+//                             height: 10,
+//                           ),
+//                           Row(
+//                             children: [
+//                               Text(
+//                                 'Đến xem',
+//                                 style: TextStyle(
+//                                     fontSize: 20,
+//                                     color: Colors.white,
+//                                     fontWeight: FontWeight.bold),
+//                               ),
+//                               SizedBox(
+//                                 width: 5,
+//                               ),
+//                               Icon(
+//                                 Icons.arrow_forward_ios,
+//                                 color: Colors.white,
+//                                 size: 18,
+//                               )
+//                             ],
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ))
+//             ],
+//           ),
+//         ),
+//         const SizedBox(height: 40,),
+//         SingleChildScrollView(
+//             scrollDirection: Axis.horizontal,
+//             child: Row(
+//               children: List.generate(phongngu.length, (index) {
+//                 return Padding(
+//                   padding: const EdgeInsets.only(left: 15),
+//                   child: Container(
+//                     width: 180,
+//                     height: 220,
+//                     child: Stack(
+//                       children: [
+//                         Container(
+//                           decoration: BoxDecoration(
+//                               image: DecorationImage(
+//                                   image: NetworkImage(
+//                                       phongngu[index].imgUrl.toString()),
+//                                   fit: BoxFit.cover),
+//                               borderRadius: BorderRadius.circular(5)),
+//                         ),
+//                         Container(
+//                           decoration: BoxDecoration(
+//                               color: Colors.black.withOpacity(0.1),
+//                               borderRadius: BorderRadius.circular(5)),
+//                         ),
+//                         Positioned(
+//                           bottom: 5,
+//                           child: Padding(
+//                             padding: const EdgeInsets.all(10.0),
+//                             child: Text(
+//                               phongngu[index].title.toString(),
+//                               style: const TextStyle(
+//                                   fontSize: 18,
+//                                   fontWeight: FontWeight.bold,
+//                                   color: Colors.white),
+//                             ),
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                 );
+//               }),
+//             )),
+//         Padding(
+//           padding: const EdgeInsets.only(left: 15, right: 15),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: <Widget>[
+//               const Padding(
+//                 padding: const EdgeInsets.only(bottom: 5),
+//                 child: Text(
+//                   'Phòng Khách',
+//                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+//                 ),
+//               ),
+//                Row(
+//                 children: const  <Widget>[
+//                   Text(
+//                     'all',
+//                     style: TextStyle(color: Colors.grey),
+//                   ),
+//                   SizedBox(
+//                     width: 5,
+//                   ),
+//                   Icon(
+//                     Icons.arrow_forward_ios_sharp,
+//                     color: Colors.grey,
+//                     size: 16,
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//         Container(
+//           child: Stack(
+//             children: [
+//               Container(
+//                 width: MediaQuery.of(context).size.width,
+//                 height: MediaQuery.of(context).size.height / 5,
+//                 decoration: const BoxDecoration(
+//                     image: DecorationImage(
+//                         image: NetworkImage('https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png'),
+//                         fit: BoxFit.fitWidth)),
+//               ),
+//               Padding(
+//                   padding: const EdgeInsets.only(bottom: 5),
+//                   child: Positioned(
+//                     bottom: 20,
+//                     child: Padding(
+//                       padding: const EdgeInsets.only(left: 20),
+//                       child: Column(
+//                         crossAxisAlignment: CrossAxisAlignment.start,
+//                         children: [
+//                           const Text(
+//                             'Tủ Tivi',
+//                             style: TextStyle(
+//                                 fontSize: 20,
+//                                 color: Colors.white,
+//                                 fontWeight: FontWeight.bold),
+//                           ),
+//                          const  SizedBox(
+//                             height: 10,
+//                           ),
+//                            Row(
+//                             children:const [
+//                                Text(
+//                                 'Đến xem',
+//                                 style: TextStyle(
+//                                     fontSize: 20,
+//                                     color: Colors.white,
+//                                     fontWeight: FontWeight.bold),
+//                               ),
+//                                SizedBox(
+//                                 width: 5,
+//                               ),
+//                               Icon(
+//                                 Icons.arrow_forward_ios,
+//                                 color: Colors.white,
+//                                 size: 18,
+//                               )
+//                             ],
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ))
+//             ],
+//           ),
+//         ),
+//         const SizedBox(height: 40,),
+//         SingleChildScrollView(
+//             scrollDirection: Axis.horizontal,
+//             child: Row(
+//               children: List.generate(phongngu.length, (index) {
+//                 return Padding(
+//                   padding: const EdgeInsets.only(left: 15),
+//                   child: Container(
+//                     width: 180,
+//                     height: 220,
+//                     child: Stack(
+//                       children: [
+//                         Container(
+//                           decoration: BoxDecoration(
+//                               image: DecorationImage(
+//                                   image: NetworkImage(
+//                                       phongkhach[index].imgUrl.toString()),
+//                                   fit: BoxFit.cover),
+//                               borderRadius: BorderRadius.circular(5)),
+//                         ),
+//                         Container(
+//                           decoration: BoxDecoration(
+//                               color: Colors.black.withOpacity(0.1),
+//                               borderRadius: BorderRadius.circular(5)),
+//                         ),
+//                         Positioned(
+//                           bottom: 5,
+//                           child: Padding(
+//                             padding: const EdgeInsets.all(10.0),
+//                             child: Text(
+//                               phongkhach[index].title.toString(),
+//                               style: const TextStyle(
+//                                   fontSize: 18,
+//                                   fontWeight: FontWeight.bold,
+//                                   color: Colors.white),
+//                             ),
+//                           ),
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                 );
+//               }),
+//             ))
+//       ],
+//     );
+//   }
+/* end load home page*/
+  Widget homepage (){
+    return  FutureBuilder<List<Product>> (
+        future: ApiServices().fetchProduct(),
+        builder: (context, AsyncSnapshot <List<Product>> snapshot){
+          if( snapshot ==null ){
+            return const Center(
+              child: Text("loading..."),
+            );
+          }
+      return ListView.builder(
+          itemCount: snapshot.data?.length,
+          itemBuilder: (context,i){
+        return Padding(padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Text('ID ' + snapshot.data![i].id.toString()),
+              Text('\n TEN SP ' + snapshot.data![i].tensp.toString()),
+              Text('\n MASP' + snapshot.data![i].masanpham.toString()),
+              Text('\n MOTA' + snapshot.data![i].mota.toString()),
+              SizedBox(
+                  child: Image.network('https://picsum.photos/250?image=9'),
+                width: 50,height: 50    ,
+              )
 
-  homepage() {
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      setState(() {});
-                    },
-                    child: categoryItem(),
-                  ),
-                ],
-              ),
             ],
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(0),
-          child: _carousel(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(5),
-          child: _productType(),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'Phòng Sách',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    'all',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_sharp,
-                    color: Colors.grey,
-                    size: 16,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          child: Stack(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 5,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(Images.KeSach),
-                        fit: BoxFit.fitWidth)),
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(bottom: 5),
-                  child: Positioned(
-                    bottom: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Kệ Sách Đứng',
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Đến xem',
-                                style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: Colors.white,
-                                size: 18,
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ))
-            ],
-          ),
-        ),
-        const SizedBox(height: 40,),
-        SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(categories.length, (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Container(
-                    width: 180,
-                    height: 220,
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      categories[index].imgUrl.toString()),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                        Positioned(
-                          bottom: 5,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              categories[index].title.toString(),
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            )),
-        Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'Phòng Ngủ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    'all',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_sharp,
-                    color: Colors.grey,
-                    size: 16,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          child: Stack(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 5,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage('https://salt.tikicdn.com/cache/w1200/ts/product/07/98/df/544ad89036ed33da95246bdfcda8b872.jpg'),
-                        fit: BoxFit.fitWidth)),
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(bottom: 5),
-                  child: Positioned(
-                    bottom: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Giường Đơn',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Đến xem',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: Colors.white,
-                                size: 18,
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ))
-            ],
-          ),
-        ),
-        const SizedBox(height: 40,),
-        SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(phongngu.length, (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Container(
-                    width: 180,
-                    height: 220,
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      phongngu[index].imgUrl.toString()),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                        Positioned(
-                          bottom: 5,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              phongngu[index].title.toString(),
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            )),
-        Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                'Phòng Khách',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              Row(
-                children: <Widget>[
-                  Text(
-                    'all',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios_sharp,
-                    color: Colors.grey,
-                    size: 16,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          child: Stack(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 5,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage('https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png'),
-                        fit: BoxFit.fitWidth)),
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(bottom: 5),
-                  child: Positioned(
-                    bottom: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Tủ Tivi',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Đến xem',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: Colors.white,
-                                size: 18,
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ))
-            ],
-          ),
-        ),
-        const SizedBox(height: 40,),
-        SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(phongngu.length, (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Container(
-                    width: 180,
-                    height: 220,
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      phongkhach[index].imgUrl.toString()),
-                                  fit: BoxFit.cover),
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                        Positioned(
-                          bottom: 5,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              phongkhach[index].title.toString(),
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            ))
-      ],
-    );
+        );
+      });
+    });
   }
 
   Widget getFooter() {
