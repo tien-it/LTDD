@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.signup,
+      initialRoute: '/login',
       onGenerateRoute: Routes.generateRoute,
     );
   }

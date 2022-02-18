@@ -2,6 +2,8 @@ import 'package:doan/views/AddressBook/addresspage.dart';
 import 'package:doan/views/BillInfomation/billinforpage.dart';
 import 'package:doan/views/Buyafter/afternullpage.dart';
 import 'package:doan/views/Buyafter/afterpage.dart';
+import 'package:doan/views/Login/login.dart';
+import 'package:doan/views/Login/password.dart';
 import 'package:doan/views/Saw/sawpage.dart';
 import 'package:doan/views/SignUp/signup.dart';
 import 'package:doan/views/home/page/homepage.dart';
@@ -17,12 +19,15 @@ import 'package:doan/views/user/account/sua_tendangnhap.dart';
 import 'package:doan/views/user/account/thongtincanhan.dart';
 import 'package:doan/views/user/order/order.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Routes {
   static const String home = "/home";
   static const String signup = "/signup";
   static const String intro = "/intro";
   static const String wellcom = "/wellcome";
+  static const String login = "/login";
+  static const String password = "/password";
   static const String account_infomation = "/account_infomation";
   static const String change_email = "/change_email";
   static const String change_gender = "/change_gender";
@@ -57,6 +62,21 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) {
             return Welcome();
+          },
+          fullscreenDialog: true,
+        );
+      case login:       
+        return MaterialPageRoute(
+          builder: (context) {
+            return LoginPage();
+          },
+          fullscreenDialog: true,
+        );
+      case password:
+      var data = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) {
+            return PassWordPage(data: data);
           },
           fullscreenDialog: true,
         );
