@@ -31,7 +31,7 @@ class _homepageState extends State<homepage> {
         if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
       },
       child: BlocProvider(
-        create: (_)=>HomeBloc(),
+        create: (_) => HomeBloc(),
         child: Scaffold(
           backgroundColor: Colors.white,
           bottomNavigationBar: getFooter(),
@@ -59,6 +59,7 @@ class _homepageState extends State<homepage> {
       default:
     }
   }
+
 // /* home page */
 //   homepage() {
 //     return ListView(
@@ -486,35 +487,37 @@ class _homepageState extends State<homepage> {
 //     );
 //   }
 /* end load home page*/
-  Widget homepage (){
-    return  FutureBuilder<List<Product>> (
+  Widget homepage() {
+    return FutureBuilder<List<Product>>(
         future: ApiServices().fetchProduct(),
-        builder: (context, AsyncSnapshot <List<Product>> snapshot){
-          if( snapshot ==null ){
+        builder: (context, snapshot) {
+          if (snapshot == null) {
             return const Center(
-              child: Text("loading..."),
+              child: Text("Error..."),
             );
           }
-      return ListView.builder(
-          itemCount: snapshot.data?.length,
-          itemBuilder: (context,i){
-        return Padding(padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Text('ID ' + snapshot.data![i].id.toString()),
-              Text('\n TEN SP ' + snapshot.data![i].tensp.toString()),
-              Text('\n MASP' + snapshot.data![i].masanpham.toString()),
-              Text('\n MOTA' + snapshot.data![i].mota.toString()),
-              SizedBox(
-                  child: Image.network('https://picsum.photos/250?image=9'),
-                width: 50,height: 50    ,
-              )
-
-            ],
-          ),
-        );
-      });
-    });
+            return ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, i) {
+                  return Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Text('ID ' + snapshot.data![i].id.toString()),
+                        Text('\n TEN SP ' + snapshot.data![i].tensp.toString()),
+                        Text('\n MASP' + snapshot.data![i].masanpham.toString()),
+                        Text('\n MOTA' + snapshot.data![i].mota.toString()),
+                        SizedBox(
+                          child:
+                          Image.network('https://picsum.photos/250?image=9'),
+                          width: 50,
+                          height: 50,
+                        )
+                      ],
+                    ),
+                  );
+                });
+        });
   }
 
   Widget getFooter() {
@@ -756,8 +759,6 @@ class _homepageState extends State<homepage> {
       ),
     );
   }
-
-
 }
 
 class category {
@@ -798,53 +799,53 @@ final List<category> phongngu = [
   category(
     title: 'Mới',
     imgUrl:
-    'https://salt.tikicdn.com/cache/w1200/ts/product/33/79/07/1a9831f35807205ff38ca2fcfe5977bb.jpg',
+        'https://salt.tikicdn.com/cache/w1200/ts/product/33/79/07/1a9831f35807205ff38ca2fcfe5977bb.jpg',
   ),
   category(
     title: 'Nệm',
     imgUrl:
-    'https://salt.tikicdn.com/cache/400x400/ts/product/09/6b/5b/e17a31fdf3015d3c54ea20c92e40dd3f.jpg.webp',
+        'https://salt.tikicdn.com/cache/400x400/ts/product/09/6b/5b/e17a31fdf3015d3c54ea20c92e40dd3f.jpg.webp',
   ),
   category(
     title: 'Giường',
     imgUrl:
-    'https://salt.tikicdn.com/cache/w1200/ts/product/70/99/b1/709900a5d81804546aef738b8dd84606.jpg',
+        'https://salt.tikicdn.com/cache/w1200/ts/product/70/99/b1/709900a5d81804546aef738b8dd84606.jpg',
   ),
   category(
     title: 'Tủ Đầu Giuong',
     imgUrl:
-    'https://salt.tikicdn.com/cache/400x400/ts/product/f3/4f/57/dc33befbbc14f1a0f61cf4cdbf16a6a5.jpg.webp',
+        'https://salt.tikicdn.com/cache/400x400/ts/product/f3/4f/57/dc33befbbc14f1a0f61cf4cdbf16a6a5.jpg.webp',
   ),
   category(
     title: 'Đèn Ngủ',
     imgUrl:
-    'https://salt.tikicdn.com/cache/w1200/ts/product/60/22/26/5b3eb3cb986f22c461251290cd64b7c3.jpg',
+        'https://salt.tikicdn.com/cache/w1200/ts/product/60/22/26/5b3eb3cb986f22c461251290cd64b7c3.jpg',
   ),
 ];
 final List<category> phongkhach = [
   category(
     title: 'Mới',
     imgUrl:
-    'https://salt.tikicdn.com/cache/400x400/ts/product/c0/bd/84/c592a519cdd2e577dabf7857ef6623ac.jpg.webp',
+        'https://salt.tikicdn.com/cache/400x400/ts/product/c0/bd/84/c592a519cdd2e577dabf7857ef6623ac.jpg.webp',
   ),
   category(
     title: 'Combo Bàn Ghế',
     imgUrl:
-    'https://salt.tikicdn.com/cache/400x400/ts/product/62/ab/43/fc3b8873821f931ed9eac3218f2c4485.jpg.webp',
+        'https://salt.tikicdn.com/cache/400x400/ts/product/62/ab/43/fc3b8873821f931ed9eac3218f2c4485.jpg.webp',
   ),
   category(
     title: 'Ấm trà',
     imgUrl:
-    'https://salt.tikicdn.com/cache/w1200/ts/product/2b/e7/bf/ec860e3914ea70cb0772ec4e44beed7c.jpg',
+        'https://salt.tikicdn.com/cache/w1200/ts/product/2b/e7/bf/ec860e3914ea70cb0772ec4e44beed7c.jpg',
   ),
   category(
     title: 'Tủ Giày',
     imgUrl:
-    'https://salt.tikicdn.com/cache/w1200/ts/product/6e/d9/cb/cd1b3a9a1b9d4d8e5756442de30f1f9e.jpg',
+        'https://salt.tikicdn.com/cache/w1200/ts/product/6e/d9/cb/cd1b3a9a1b9d4d8e5756442de30f1f9e.jpg',
   ),
   category(
     title: 'Khác',
     imgUrl:
-    'https://salt.tikicdn.com/cache/400x400/ts/product/d5/77/67/703b496808c80995f97897076b343cda.jpg.webp',
+        'https://salt.tikicdn.com/cache/400x400/ts/product/d5/77/67/703b496808c80995f97897076b343cda.jpg.webp',
   ),
 ];
