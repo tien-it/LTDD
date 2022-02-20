@@ -72,14 +72,14 @@ class Routes {
           },
           fullscreenDialog: true,
         );
-      case password:
-      var data = settings.arguments as String;
-        return MaterialPageRoute(
-          builder: (context) {
-            return PassWordPage(data: data);
-          },
-          fullscreenDialog: true,
-        );
+      // case password:
+      // var data = settings.arguments as String;
+      //   return MaterialPageRoute(
+      //     builder: (context) {
+      //       return PassWordPage(data: data);
+      //     },
+      //     fullscreenDialog: true,
+      //   );
       case buylate:
         return MaterialPageRoute(
           builder: (context) {

@@ -1,8 +1,13 @@
+import 'package:doan/models/account_model.dart';
+import 'package:doan/models/login_model.dart';
 import 'package:doan/resources/configs/routes.dart';
 import 'package:doan/views//Login/password.dart';
+import 'package:doan/views/ForgotPassword/phonepage.dart';
 import 'package:doan/views/SignUp/signup.dart';
+import 'package:doan/views/home/page/homepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -10,8 +15,13 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-final sdt = TextEditingController();
+ 
+ final sdt = TextEditingController();
 class _LoginPageState extends State<LoginPage> {
+
+  bool isHiddenPassword = true;
+  
+  final password = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
@@ -46,13 +56,56 @@ class _LoginPageState extends State<LoginPage> {
                 height: 10,
               ),
               textPhone,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+                child: Column(
+                  children: <Widget>[
+                    TextField(
+                      autocorrect: false,
+                      obscureText: isHiddenPassword,
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                      decoration: InputDecoration(
+                        suffixIcon: InkWell(
+                          onTap: _togglePasswordView,
+                          child: const Icon(Icons.visibility),
+                        ),
+                        hintText: "Mật khẩu",
+                      ),
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.done,
+                      controller: password,                     
+                    ),
+                  ],
+                )
+            ),
               const SizedBox(
                 height: 1,
               ),
               const SizedBox(
                 height: 10,
               ),
-              buttoncontineu(context),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50, 0, 50, 20),
+                child: ElevatedButton(
+                  onPressed: () {      
+                    
+                    login(context,sdt.text ,password.text );
+                  },
+                  child: const Text(
+                    'Đăng nhập',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: TextButton.styleFrom(
+                    minimumSize: const Size(355, 40),
+                    backgroundColor: Colors.red,
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 1,
               ),
@@ -69,21 +122,55 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+  void _togglePasswordView() {
+    setState(() {
+      isHiddenPassword = !isHiddenPassword;
+    });
+  }
 }
 
-Widget buttoncontineu(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(60, 0, 30, 20),
-    child: ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(
+Future<void> login(
+      BuildContext context, String phone, String password) async {
+    var client = http.Client();
+    var response =
+        await client.post(Uri.parse('http://10.0.2.2:8000/api/login'),
+            body: ({
+              'SODIENTHOAI': phone,
+              'MATKHAU': password,
+            }));
+    if (response.statusCode == 201) {
+      LoginRequestModel(response.body);    
+      Navigator.push(
           context,
-          '/password',
-          arguments: sdt.text,
+          MaterialPageRoute(
+            builder: (context) => const homepage(),
+          ));
+    } 
+    else {
+      // await Future.delayed(const Duration(seconds: 1));
+      // throw Exception("Không ổn mật khẩu hoặc email sai");
+      ScaffoldMessenger.of(context)
+        ..removeCurrentSnackBar()
+        ..showSnackBar(
+          const SnackBar(
+            content: Text('Số điện thoại hoặc mật khẩu không đúng'),
+          ),
         );
+    }
+  }
+
+
+
+Widget buttoncontineu(BuildContext context,String sdt,String password) {
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(50, 0, 50, 20),
+    child: ElevatedButton(
+      onPressed: () {      
+        print(sdt + password);
+        //login(context,sdt ,password );
       },
       child: const Text(
-        'Tiếp tục',
+        'Đăng nhập',
         style: TextStyle(
           fontSize: 20,
           color: Colors.white,
