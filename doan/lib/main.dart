@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/home': (context) => const homepage(),
-        '/': (context) => const AccountPage(),
+        //'/': (context) => const AccountPage(),
         '/thong_tin_ca_nhan': (context) => const ThongTinCaNhan(),
         '/sua_hovaten': (context) => const Sua_HovaTen(),
         '/sua_email': (context) => const SuaEmail(),
@@ -62,6 +62,7 @@ class MyApp extends StatelessWidget {
         '/doimatkhau': (context) => const DoiMatKhau(),
         '/suatendangnhap': (context) => const SuaTenDangNhap(),
         '/donhang': (context) => const DonHang(),
+        '/' :(context) => const LoginPage(),
       },
 
       debugShowCheckedModeBanner: false,
