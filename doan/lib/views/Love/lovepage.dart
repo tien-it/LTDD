@@ -1,4 +1,5 @@
 
+import 'package:doan/resources/configs/config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,33 +12,7 @@ class LovePage extends StatefulWidget {
 class _LovePageState extends State<LovePage> {
   @override
   Widget build(BuildContext context){
-    return Scaffold(          
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          }
-          ),
-          title: const Align(
-            child: Text(
-              'Yêu thích',
-              style: TextStyle(
-              fontSize: 22,
-              ),
-            ),
-            alignment: Alignment.centerLeft,
-          ),                
-          backgroundColor: const  Color(0xFF0D47A1),
-          foregroundColor: Colors.white,
-          automaticallyImplyLeading: false,   
-          actions: <Widget> [
-            IconButton(
-              onPressed: (){}, 
-              icon: const Icon(Icons.shopping_cart)
-            )
-          ],
-      ),
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -62,7 +37,7 @@ Widget Love(BuildContext context){
         child: Padding(
           padding: EdgeInsets.all(2),    
           child: Image(
-            image: AssetImage('icons/kesach.jpg'),
+            image: AssetImage(Images.KeSach),
             height: 130,
             width: 130,
           ),       

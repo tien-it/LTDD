@@ -1,13 +1,10 @@
 import 'package:doan/models/account_model.dart';
-import 'package:doan/models/login.dart';
-
+import 'package:doan/models/login_model.dart';
+import 'package:doan/resources/configs/routes.dart';
 import 'package:doan/views//Login/password.dart';
 import 'package:doan/views/ForgotPassword/phonepage.dart';
-import 'package:doan/views/Login/password.dart';
-import 'package:doan/views/Love/lovepage.dart';
 import 'package:doan/views/SignUp/signup.dart';
-
-import 'package:doan/views/trangchu/trangchu.dart';
+import 'package:doan/views/home/page/homepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -43,10 +40,10 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 50),
-              //   child: imageHead,
-              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: imageHead,
+              ),
               const SizedBox(
                 height: 5,
               ),
@@ -109,16 +106,16 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              // const SizedBox(
-              //   height: 1,
-              // ),
-              // textSignUp(context),
-              // const SizedBox(
-              //   height: 70,
-              // ),
-              // textcontineu,
-              // iconLoginAnother,
-              // textRules
+              const SizedBox(
+                height: 1,
+              ),
+              textSignUp(context),
+              const SizedBox(
+                height: 70,
+              ),
+              textcontineu,
+              iconLoginAnother,
+              textRules
             ],
           ),
         ),
@@ -146,7 +143,7 @@ Future<void> login(
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const LovePage(),
+            builder: (context) => const homepage(),
           ));
     } 
     else {
@@ -247,7 +244,7 @@ Widget textPhone = Padding(
 Widget textSignUp(BuildContext context) {
   return TextButton(
     onPressed: () {
-      //Navigator.pushNamed(context, Routes.home);
+      Navigator.pushNamed(context, Routes.home);
     },
     child: Column(
       children: const [
