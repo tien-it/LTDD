@@ -42,15 +42,15 @@ class _ShowState extends State<Show> {
   Widget SuccessListItemWidget(taikhoan data) {
     return ListView(
       children: [
-        ListTile(
-          leading: const Icon(Icons.person_outline, size: 30,),
-          title: const Text('Họ và Tên'),
-          subtitle: Text(data.name),
-          trailing: IconButton( icon: Icon(Icons.arrow_forward_ios_outlined ),
-            onPressed: (){
-              Navigator.pushNamed(context, Routes.change_fullname);
-            },),
-        ),
+        // ListTile(
+        //   leading: const Icon(Icons.person_outline, size: 30,),
+        //   title: const Text('Họ và Tên'),
+        //   subtitle: Text(data.name),
+        //   trailing: IconButton( icon: Icon(Icons.arrow_forward_ios_outlined ),
+        //     onPressed: (){
+        //       Navigator.pushNamed(context, Routes.change_fullname);
+        //     },),
+        // ),
         Container(height: 5 , color: Colors.tealAccent,),
         ListTile(
           leading: const  Icon(Icons.people_outline, size: 30),
@@ -62,15 +62,15 @@ class _ShowState extends State<Show> {
             },),
         ),
         Container(height: 5 , color: Colors.tealAccent,),
-        ListTile(
-          leading: const Icon(Icons.event, size: 30),
-          title: const Text('Ngày Sinh'),
-          subtitle: Text(data.birthday.toString()),
-          trailing: IconButton( icon:const Icon(Icons.arrow_forward_ios_outlined ),
-            onPressed: (){
-              Navigator.pushNamed(context,Routes.change_birthday);
-            },),
-        ),
+        // ListTile(
+        //   leading: const Icon(Icons.event, size: 30),
+        //   title: const Text('Ngày Sinh'),
+        //   subtitle: Text(data.birthday.toString()),
+        //   trailing: IconButton( icon:const Icon(Icons.arrow_forward_ios_outlined ),
+        //     onPressed: (){
+        //       Navigator.pushNamed(context,Routes.change_birthday);
+        //     },),
+        // ),
         Container(height: 5 , color: Colors.tealAccent,),
         ListTile(
           leading:const Icon(Icons.mail_outline ,size: 30),
@@ -91,15 +91,15 @@ class _ShowState extends State<Show> {
               Navigator.pushNamed(context,Routes.change_phone);
             },),
         ),Container(height: 5 , color: Colors.tealAccent,),
-        ListTile(
-          leading:const Icon(Icons.transgender, size: 30),
-          title:const  Text('Giới Tính'),
-          subtitle: Text(data.gender),
-          trailing: IconButton( icon:const  Icon(Icons.arrow_forward_ios_outlined ),
-            onPressed: (){
-              Navigator.pushNamed(context,Routes.change_gender);
-            },),
-        ),Container(height: 5 , color: Colors.tealAccent,),
+        // ListTile(
+        //   leading:const Icon(Icons.transgender, size: 30),
+        //   title:const  Text('Giới Tính'),
+        //   subtitle: Text(data.gender),
+        //   trailing: IconButton( icon:const  Icon(Icons.arrow_forward_ios_outlined ),
+        //     onPressed: (){
+        //       Navigator.pushNamed(context,Routes.change_gender);
+        //     },),
+        // ),Container(height: 5 , color: Colors.tealAccent,),
         ListTile(
           leading:const Icon(Icons.lock_outline, size: 30),
           title: const Text('Đổi Mật Khẩu'),

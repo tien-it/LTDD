@@ -56,16 +56,13 @@ Widget BuyAfter(BuildContext context){
          height: 170,
          color: Colors.white,
       ),
-      const Positioned(
+       Positioned(
         left: 10,
         top: 10,
         child: Padding(
           padding: EdgeInsets.all(2),    
-          child: Image(
-            image: AssetImage('icons/kesach.jpg'),
-            height: 130,
-            width: 130,
-          ),       
+          child: Image.network(( "https://salt.tikicdn.com/cache/w1200/ts/product/07/98/df/544ad89036ed33da95246bdfcda8b872.jpg")
+          ,width: 100, height: 100,)
         ),
       ),
       Positioned(

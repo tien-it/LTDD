@@ -7,8 +7,8 @@ abstract class HomeState extends Equatable {
   List<Object> get props => [];
 }
 class Loading extends HomeState {
-
 }
+
 class LoadingSucces extends HomeState {
   final List<Product> product;
   const LoadingSucces({required this.product});

@@ -1,14 +1,12 @@
+import 'dart:convert';
+
+import 'package:doan/data_sources/local/local.dart';
 import 'package:doan/models/account_model.dart';
 import 'package:doan/models/login_model.dart';
 import 'package:doan/resources/configs/routes.dart';
-import 'package:doan/views//Login/password.dart';
-import 'package:doan/views/ForgotPassword/phonepage.dart';
-import 'package:doan/views/SignUp/signup.dart';
 import 'package:doan/views/home/page/homepage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -51,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 3,
               ),
-              textlogin,
+
               const SizedBox(
                 height: 10,
               ),
@@ -128,7 +126,6 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 }
-
 Future<void> login(
       BuildContext context, String phone, String password) async {
     var client = http.Client();
@@ -138,6 +135,12 @@ Future<void> login(
               'SODIENTHOAI': phone,
               'MATKHAU': password,
             }));
+        print(response.body);
+      //final prefs = await SharedPreferences.getInstance();
+     //prefs.setString( 'user',response.body
+    Map<String, dynamic> userMap  = jsonDecode(response.body);
+      myuser = taikhoan.fromJson(userMap);
+        print(response.body);
     if (response.statusCode == 201) {
       LoginRequestModel(response.body);    
       Navigator.push(
@@ -147,8 +150,6 @@ Future<void> login(
           ));
     } 
     else {
-      // await Future.delayed(const Duration(seconds: 1));
-      // throw Exception("Không ổn mật khẩu hoặc email sai");
       ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
         ..showSnackBar(
@@ -158,8 +159,6 @@ Future<void> login(
         );
     }
   }
-
-
 
 Widget buttoncontineu(BuildContext context,String sdt,String password) {
   return Padding(
@@ -204,7 +203,7 @@ Widget texthelo = Column(
   children: const [
     Padding(padding: EdgeInsets.only(left: 180)),
     Text(
-      "Xin chào,",
+      "Xin chào ",
       style: TextStyle(
         fontSize: 30,
       ),
@@ -212,17 +211,6 @@ Widget texthelo = Column(
   ],
 );
 
-Widget textlogin = Column(
-  children: const [
-    Padding(padding: EdgeInsets.only(left: 260)),
-    Text(
-      "Đăng nhập hoặc tạo tài khoản",
-      style: TextStyle(
-        fontSize: 15,
-      ),
-    ),
-  ],
-);
 
 Widget textPhone = Padding(
   padding:const  EdgeInsets.fromLTRB(30, 0, 30, 20),
@@ -244,17 +232,24 @@ Widget textPhone = Padding(
 Widget textSignUp(BuildContext context) {
   return TextButton(
     onPressed: () {
-      Navigator.pushNamed(context, Routes.home);
+      Navigator.pushNamed(context, Routes.signup);
     },
-    child: Column(
-      children: const [
-        Padding(padding: EdgeInsets.only(left: 420)),
+    child:Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:  [
+        Padding(padding: EdgeInsets.only()),
         Text(
-          "Tạo tài khoản",
+          " tạo tài khoản",
           style: TextStyle(
             fontSize: 15,
-            color: Colors.blue,
           ),
+        ),
+        Padding(padding: EdgeInsets.only()),
+        TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, Routes.fogot_password);
+          }, child: Text( "Quên Mật Khẩu",),
         ),
       ],
     ),

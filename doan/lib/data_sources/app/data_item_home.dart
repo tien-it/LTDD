@@ -26,7 +26,7 @@ List itemPage = [
   {"title": "Mã giảm giá"},
 ];
 List imgList = [
-  'https://media.istockphoto.com/photos/aerial-view-of-notredame-cathedral-basilica-of-saigon-picture-id918767152?b=1&k=20&m=918767152&s=170667a&w=0&h=hLc4-OR1EG8zWWpX0C5TSrIKzM50uNKSwJXIQ71_rDs=',
-  'https://media.istockphoto.com/photos/aerial-view-of-the-golden-bridge-is-lifted-by-two-giant-hands-and-two-picture-id1279735021?b=1&k=20&m=1279735021&s=170667a&w=0&h=t7H8-cP55jrr0SoKRIIoLKyQJoVZWDGUD7WtnOL7Feg=',
-  'https://media.istockphoto.com/photos/vietnamese-woman-rowing-a-boat-mekong-river-delta-vietnam-picture-id1143533885?b=1&k=20&m=1143533885&s=170667a&w=0&h=g1X41_cFCUph7So-FTj0itWIsQaJRX1p0wfrlopfMjk=',
+  'https://noithattrevietnam.com/uploaded/2018/08/1-mau-nha-dep-noi-that-hien-dai-can-80m2%20%281%29.jpg',
+  'https://noithatmanhhe.vn/media/27096/16-tong-quan-khong-gian-phong-khach.jpg',
+  'https://thietkethicongnhadep.net/wp-content/uploads/2022/01/thiet-ke-noi-that-biet-thu-hien-dai-dep-an-tuong-tai-thai-binh-ndntbt9-4.jpg',
 ];

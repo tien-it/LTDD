@@ -70,12 +70,11 @@ Widget info(BuildContext context){
         ),
       ),
     ),
-    const Positioned(
+      Positioned(
       top: 50,
       left: 10,
-      child: Image(
-        image: AssetImage('icons/momo.jpg'),
-      ),
+      child: Image.network(( "https://play-lh.googleusercontent.com/dQbjuW6Jrwzavx7UCwvGzA_sleZe3-Km1KISpMLGVf1Be5N6hN6-tdKxE5RDQvOiGRg")
+        ,width: 50, height: 50,)
     ),
     Positioned(
       top: 60,

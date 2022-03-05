@@ -1,4 +1,5 @@
 
+import 'package:doan/resources/configs/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 class DonHang extends StatefulWidget {
@@ -100,15 +101,13 @@ danggiao(BuildContext context) {
   return ListView(
     children: [
       itemdanggiao(context),
-      itemdanggiao(context),
-      itemdanggiao(context),
+
     ],
   );
 }
 dagiao(BuildContext context) {
   return ListView(
     children: [
-      itemdagiao(context),
       itemdagiao(context),
     ],
   );
@@ -117,7 +116,6 @@ dahuy(BuildContext context) {
   return ListView(
     children: [
      itemdahuy(context),
-      itemdahuy(context)
     ],
   );
 }
@@ -125,7 +123,6 @@ danhgia(BuildContext context) {
   return ListView(
     children: [
       itemchodanhgia(context),
-      itemdadanhgia(context)
     ],
   );
 }
@@ -144,21 +141,27 @@ Widget itemdanggiao(BuildContext context){
           Row(
             children: [
               SizedBox(
-                  child: Image.network("https://hinhgaixinh.com/wp-content/uploads/2021/03/20210314-phuong-anh-9x-5-scaled.jpg"),
+                  child: Image.network("https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png"),
                 width: 150, height: 100,
               ) ,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Gái Xinh Nhà Người Ta', style:  TextStyle(fontSize: 20),
-                  ),
+                  Text(
+                     'Sản phẩm 01' ,style:  TextStyle(fontSize: 20) ),
                   Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 20),
                         child: Text('Giá : 10.000.000'),
                       ),
-                      Text('Số Lượng : 1')
+                      Column(
+                        children: [
+                          Text('Số Lượng : 1'),
+                          TextButton( onPressed: () { Navigator.pushNamed(context, Routes.detail_invoice); } , child:Text("Detail"))
+                        ],
+                      ) ,
+
                     ],
                   ),
 
@@ -196,13 +199,13 @@ Widget itemdagiao(BuildContext context){
           Row(
             children: [
               SizedBox(
-                child: Image.network("https://hinhgaixinh.com/wp-content/uploads/2021/03/20210314-phuong-anh-9x-5-scaled.jpg"),
+                child: Image.network("https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png"),
                 width: 150, height: 100,
               ) ,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Gái Xinh Nhà Người Ta', style:  TextStyle(fontSize: 20),
+                  Text('Sản phẩm 09', style:  TextStyle(fontSize: 20),
                   ),
                   Row(
                     children: [
@@ -255,13 +258,13 @@ Widget itemdahuy(BuildContext context){
           Row(
             children: [
               SizedBox(
-                child: Image.network("https://hinhgaixinh.com/wp-content/uploads/2021/03/20210314-phuong-anh-9x-5-scaled.jpg"),
+                child: Image.network("https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png"),
                 width: 150, height: 100,
               ) ,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Gái Xinh Nhà Người Ta', style:  TextStyle(fontSize: 20),
+                  Text('Sản phẩm 07', style:  TextStyle(fontSize: 20),
                   ),
                   Row(
                     children: [
@@ -306,13 +309,13 @@ Widget itemdangxuly(BuildContext context){
           Row(
             children: [
               SizedBox(
-                child: Image.network("https://hinhgaixinh.com/wp-content/uploads/2021/03/20210314-phuong-anh-9x-5-scaled.jpg"),
+                child: Image.network("https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png"),
                 width: 150, height: 100,
               ) ,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Gái Xinh Nhà Người Ta', style:  TextStyle(fontSize: 20),
+                  Text('Sản phẩm 06', style:  TextStyle(fontSize: 20),
                   ),
                   Row(
                     children: [
@@ -361,13 +364,13 @@ Widget itemchodanhgia(BuildContext context){
           Row(
             children: [
               SizedBox(
-                child: Image.network("https://hinhgaixinh.com/wp-content/uploads/2021/03/20210314-phuong-anh-9x-5-scaled.jpg"),
+                child: Image.network("https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png"),
                 width: 150, height: 100,
               ) ,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Gái Xinh Nhà Người Ta', style:  TextStyle(fontSize: 20),
+                  Text('Sản phâm 05', style:  TextStyle(fontSize: 20),
                   ),
                   Row(
                     children: [
@@ -419,13 +422,13 @@ Widget itemdadanhgia(BuildContext context){
           Row(
             children: [
               SizedBox(
-                child: Image.network("https://hinhgaixinh.com/wp-content/uploads/2021/03/20210314-phuong-anh-9x-5-scaled.jpg"),
+                child: Image.network("https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png"),
                 width: 150, height: 100,
               ) ,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Gái Xinh Nhà Người Ta', style:  TextStyle(fontSize: 20),
+                  Text('sản phẩm 03', style:  TextStyle(fontSize: 20),
                   ),
                   Row(
                     children: [
@@ -474,13 +477,13 @@ Widget itemthanhtoan(BuildContext context){
           Row(
             children: [
               SizedBox(
-                child: Image.network("https://hinhgaixinh.com/wp-content/uploads/2021/03/20210314-phuong-anh-9x-5-scaled.jpg"),
+                child: Image.network("https://salt.tikicdn.com/cache/w1200/ts/product/d2/85/84/48836d558dfa7d5d11f167d8453704db.png"),
                 width: 150, height: 100,
               ) ,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Gái Xinh Nhà Người Ta', style:  TextStyle(fontSize: 20),
+                  Text('Sản phẩm 02', style:  TextStyle(fontSize: 20),
                   ),
                   Row(
                     children: [

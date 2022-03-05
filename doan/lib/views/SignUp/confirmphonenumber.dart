@@ -114,7 +114,7 @@ Widget buttonconfrim(BuildContext context) {
     child: ElevatedButton(
       onPressed: () {
         Navigator.pushNamed(
-          context,Routes.home
+          context,Routes.password
         );
       },
       child: const Text(

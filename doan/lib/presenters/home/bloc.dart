@@ -23,6 +23,7 @@ class HomeBloc extends Bloc< HomeEvent, HomeState> {
       var api =ApiServices();
       _Items = await api.fetchProduct();
       yield LoadingSucces(product: _Items);
+
     } else  {
       yield LoadingError();
     }
