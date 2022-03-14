@@ -126,8 +126,7 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 }
-Future<void> login(
-      BuildContext context, String phone, String password) async {
+Future<void> login( BuildContext context, String phone, String password) async {
     var client = http.Client();
     var response =
         await client.post(Uri.parse('http://10.0.2.2:8000/api/login'),
@@ -139,16 +138,18 @@ Future<void> login(
       //final prefs = await SharedPreferences.getInstance();
      //prefs.setString( 'user',response.body
     Map<String, dynamic> userMap  = jsonDecode(response.body);
+
       myuser = taikhoan.fromJson(userMap);
         print(response.body);
+
     if (response.statusCode == 201) {
-      LoginRequestModel(response.body);    
+      LoginRequestModel(response.body);
       Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const homepage(),
           ));
-    } 
+    }
     else {
       ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()

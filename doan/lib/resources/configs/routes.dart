@@ -7,6 +7,7 @@ import 'package:doan/views/Login/login.dart';
 import 'package:doan/views/Login/password.dart';
 import 'package:doan/views/SanPham/all.dart';
 import 'package:doan/views/Saw/sawpage.dart';
+import 'package:doan/views/SignUp/confirmphonenumber.dart';
 import 'package:doan/views/SignUp/createpass.dart';
 import 'package:doan/views/SignUp/signup.dart';
 import 'package:doan/views/home/page/homepage.dart';
@@ -48,8 +49,17 @@ class Routes {
   static const String detail_invoice = "/Detail_invoice";
   static const String fogot_password = "/fogot_password";
   static const String allproduct = "/all_product";
+  static const String authenphone = "/authenhone";
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+
+      case authenphone :{
+        var data = settings.arguments as String;
+       return MaterialPageRoute(
+       builder: (context){
+         return ConfirmPhoneNumberPage(data :data);
+       } ); }
+
 
     case  allproduct:
     return MaterialPageRoute(
@@ -99,13 +109,14 @@ class Routes {
           },
           fullscreenDialog: true,
         );
-      case password:
+      case password: {
+        var data1 = settings.arguments as String;
         return MaterialPageRoute(
           builder: (context) {
-            return CreatePassPage();
+            return CreatePassPage( data: data1 );
           },
           fullscreenDialog: true,
-        );
+        );}
       case buylate:
         return MaterialPageRoute(
           builder: (context) {

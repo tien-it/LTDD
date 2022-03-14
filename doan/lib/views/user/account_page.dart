@@ -1,3 +1,5 @@
+import 'package:doan/data_sources/local/local.dart';
+import 'package:doan/models/account_model.dart';
 import 'package:doan/resources/configs/config.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,7 @@ class _AccountPageState extends State<AccountPage> {
   Widget getBody() {
     return ListView(
       children: [
+
         Padding(
           padding: const EdgeInsets.only(left: 20, top: 10),
           child: Row(
@@ -25,10 +28,10 @@ class _AccountPageState extends State<AccountPage> {
               Container(
                 width: 80,
                 height: 80,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
-                            'https://thuthuatnhanh.com/wp-content/uploads/2019/07/anh-girl-xinh-facebook-tuyet-dep.jpg'),
+                            myuser.image_url),
                         fit: BoxFit.scaleDown,
                         repeat: ImageRepeat.repeatX),
                     shape: BoxShape.circle),
@@ -37,12 +40,32 @@ class _AccountPageState extends State<AccountPage> {
                 width: 20,
               ),
               Column(
-                children: const [
+                children: [
                   Text(
-                    'Đinh Văn Tiến',
+                    myuser.username,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                   ),
-                  Text('0327688127')
+                  Text(myuser.phone),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, Routes.login);
+                      },
+                      child: const Text(
+                        'Đăng Xuất',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                      style: TextButton.styleFrom(
+                        minimumSize: const Size(35, 40),
+                        backgroundColor: Colors.red,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -69,39 +92,39 @@ class _AccountPageState extends State<AccountPage> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context,Routes.order);
+                          Navigator.pushNamed(context, Routes.order);
                         },
                         icon: const Icon(Icons.account_balance_wallet_outlined),
                         iconSize: 30,
                         color: Colors.blue,
                         splashColor: Colors.blue),
-                        const Text('To Pay'),
+                    const Text('To Pay'),
                   ],
                 ),
                 Column(
                   children: [
                     IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context,Routes.order);
+                          Navigator.pushNamed(context, Routes.order);
                         },
                         icon: const Icon(Icons.archive_outlined),
                         iconSize: 30,
                         color: Colors.blue,
                         splashColor: Colors.blue),
-                        const Text('To Ship'),
+                    const Text('To Ship'),
 
                   ],
                 ),
                 Column(
                   children: [
                     IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context,Routes.order);
-                        },
-                        icon: const Icon(Icons.directions_car_filled_outlined),
-                        iconSize: 30,
-                        color: Colors.blue,
-                        splashColor: Colors.blue,
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.order);
+                      },
+                      icon: const Icon(Icons.directions_car_filled_outlined),
+                      iconSize: 30,
+                      color: Colors.blue,
+                      splashColor: Colors.blue,
                     ),
                     const Text('To Receive'),
 
@@ -148,7 +171,7 @@ class _AccountPageState extends State<AccountPage> {
                         iconSize: 30,
                         color: Colors.blue,
                         splashColor: Colors.blue),
-                        const Text('History'),
+                    const Text('History'),
 
                   ],
                 ),
@@ -160,7 +183,7 @@ class _AccountPageState extends State<AccountPage> {
                         iconSize: 30,
                         color: Colors.blue,
                         splashColor: Colors.blue),
-                        const Text('Favorite',),
+                    const Text('Favorite',),
 
                   ],
                 ),
@@ -174,7 +197,7 @@ class _AccountPageState extends State<AccountPage> {
                         iconSize: 30,
                         color: Colors.blue,
                         splashColor: Colors.blue),
-                        const Text('Buy later'),
+                    const Text('Buy later'),
                   ],
                 ),
               ],
@@ -256,4 +279,5 @@ class _AccountPageState extends State<AccountPage> {
       ],
     );
   }
+
 }

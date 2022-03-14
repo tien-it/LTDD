@@ -11,8 +11,7 @@ class ApiServices {
 
   Future<List<Product>> fetchProduct() async {
     var response = await http.get(Uri.parse("http://10.0.2.2:8000/api/sanpham"));
-      print(response.body);
-
+    print(response.body);
     final int statusCode = response.statusCode;
     if (statusCode != 200 || response.body == null) {
       print(response.reasonPhrase);

@@ -1,3 +1,4 @@
+import 'package:doan/resources/configs/routes.dart';
 import 'package:doan/views/SignUp/confirmphonenumber.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final txtsdt = TextEditingController() ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -50,9 +52,44 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(height: 10,),
               textdescription,
               const SizedBox(height: 10,),
-              textfieldPhone,
-              const SizedBox(height: 50,),  
-              buttoncontineu(context),
+          Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+              child: TextField(
+                cursorColor: Colors.blue,
+                autocorrect: false,
+                style: const TextStyle(
+                  fontSize: 20,
+                ),
+                decoration: const InputDecoration(
+                  hintText: "Số điện thoại",
+                ),
+                keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.done,
+                maxLength: 10,
+                controller: txtsdt,
+              ),
+          ),
+              const SizedBox(height: 50,),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed (context, Routes.authenphone ,arguments: txtsdt.text
+                    );
+                  },
+                  child: const Text(
+                    'Tiếp tục',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  style: TextButton.styleFrom(
+                    minimumSize: const Size(355, 40),
+                    backgroundColor: Colors.red,
+                  ),
+                ),
+              )
             ]
           ),
       ))
@@ -67,6 +104,7 @@ Widget textphone = Column(
       'Nhập số điện thoại',
       style: TextStyle(
         fontSize: 26,
+
       ),
     ),
   ],
@@ -84,45 +122,3 @@ Widget textdescription = Column(
   ],
 );
 
-Widget textfieldPhone = const Padding(
-  padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-  child: TextField(
-    cursorColor: Colors.blue,
-    autocorrect: false,
-    style: TextStyle(
-      fontSize: 20,
-    ),
-    decoration: InputDecoration(
-      hintText: "Số điện thoại",
-    ),
-    keyboardType: TextInputType.number,
-    textInputAction: TextInputAction.done,
-    maxLength: 10,
-  ),
-);
-
-Widget buttoncontineu(BuildContext context ){
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-    child: ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => const ConfirmPhoneNumberPage()),
-        );
-      },
-      child: const Text(
-        'Tiếp tục',
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.white,
-        ),
-      ),
-      style: TextButton.styleFrom(
-        minimumSize: const Size(355, 40),
-        backgroundColor: Colors.red,
-      ),
-    ),
-  );
-}

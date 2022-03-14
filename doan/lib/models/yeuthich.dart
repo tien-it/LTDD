@@ -14,5 +14,5 @@ class yeuthich {
     "idTT" : id,
     "MAKHACHHANG":makhachhang  ,
     "MASANPHAM":masanpham
-  };
+  };  
 }

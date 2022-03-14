@@ -187,8 +187,8 @@ class _homepageState extends State<homepage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 5),
+               const Padding(
+                padding: EdgeInsets.only(bottom: 5),
                 child: Text(
                   'Phòng Ngủ',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -198,15 +198,15 @@ class _homepageState extends State<homepage> {
                 children: <Widget>[
                   TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       'all',
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward_ios_sharp,
                     color: Colors.grey,
                     size: 16,
@@ -222,7 +222,7 @@ class _homepageState extends State<homepage> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 5,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
                             'https://salt.tikicdn.com/cache/w1200/ts/product/07/98/df/544ad89036ed33da95246bdfcda8b872.jpg'),
@@ -237,19 +237,19 @@ class _homepageState extends State<homepage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                         const  Text(
                             'Giường Đơn',
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(
+                         const  SizedBox(
                             height: 10,
                           ),
                           Row(
-                            children: [
-                              Text(
+                            children: const  [
+                               Text(
                                 'Đến xem',
                                 style: TextStyle(
                                     fontSize: 20,
@@ -337,15 +337,15 @@ class _homepageState extends State<homepage> {
                     onPressed: () {
                       Navigator.pushNamed(context, Routes.allproduct);
                     },
-                    child: Text(
+                    child: const Text(
                       'all',
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward_ios_sharp,
                     color: Colors.grey,
                     size: 16,

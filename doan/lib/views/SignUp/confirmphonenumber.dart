@@ -3,12 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmPhoneNumberPage extends StatefulWidget {
-  const ConfirmPhoneNumberPage({Key? key}) : super(key: key);
+  final String data ;
+  const ConfirmPhoneNumberPage({Key? key ,required this.data }) : super(key: key);
   @override
-  State<ConfirmPhoneNumberPage> createState() => _ConfirmPhoneNumberPageState();
+  State<ConfirmPhoneNumberPage> createState() => _ConfirmPhoneNumberPageState( this.data);
 }
 
 class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
+  final  String data ;
+  _ConfirmPhoneNumberPageState(this.data);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -50,7 +53,20 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  textdescription,
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          'Để xác minh số điện thoại của bạn, nhập mã gồm 6 chữ '
+                              'số vừa được gửi tới ' + data,
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -58,7 +74,27 @@ class _ConfirmPhoneNumberPageState extends State<ConfirmPhoneNumberPage> {
                   const SizedBox(
                     height: 50,
                   ),
-                  buttonconfrim(context),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context,Routes.password , arguments: data.toString());
+                        print(data);
+                      },
+                      child: const Text(
+                        'Xác nhận',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                      style: TextButton.styleFrom(
+                        minimumSize: const Size(355, 40),
+                        backgroundColor: Colors.red,
+                      ),
+                    ),
+                  ),
                 ]),
           )),
     );
@@ -76,22 +112,6 @@ Widget textcode = Column(
     ),
   ],
 );
-
-Widget textdescription = Padding(
-  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-  child: Column(
-    children: const <Widget>[
-      Text(
-        'Để xác minh số điện thoại của bạn, nhập mã gồm 6 chữ '
-        'số vừa được gửi tới 0829912585',
-        style: TextStyle(
-          fontSize: 15,
-        ),
-      ),
-    ],
-  ),
-);
-
 Widget textfieldcode = const Padding(
   padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
   child: TextField(
@@ -108,26 +128,3 @@ Widget textfieldcode = const Padding(
     maxLength: 6,
   ),
 );
-Widget buttonconfrim(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-    child: ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(
-          context,Routes.password
-        );
-      },
-      child: const Text(
-        'Xác nhận',
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.white,
-        ),
-      ),
-      style: TextButton.styleFrom(
-        minimumSize: const Size(355, 40),
-        backgroundColor: Colors.red,
-      ),
-    ),
-  );
-}

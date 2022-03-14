@@ -33,7 +33,7 @@ class _WelcomeState extends State<Welcome> {
       isFirstTime().then((isFirstTime) {
         isFirstTime
             ? Navigator.pushNamed(context, Routes.intro)
-            : Navigator.pushNamed(context, Routes.home);
+            : Navigator.pushNamed(context, Routes.login);
       });
     });
   }
