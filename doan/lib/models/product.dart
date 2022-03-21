@@ -1,24 +1,24 @@
 class Product {
-   final int? id;
-  final int? maloaisp;
-   final String? tensp;
-   final String? giaban;
-   final int? soluongton;
-   final int? trangthai;
-   final String? hinhanh;
-   final String? mota;
-   final String? createdAt;
-   final String? updatedAt;
-   final int? masanpham;
-   final int? machitietsanpham;
-   final String? thuonghieu;
-   final String? noisanxuat;
-   final String? chatlieu;
-   final String? phongcach;
-   final String? mausac;
-   final int? chieudai;
-   final int? chieurong;
-   final String? baohanh;
+   final int id;
+  final int maloaisp;
+   final String tensp;
+   final int giaban;
+   final int soluongton;
+   final int trangthai;
+   final String hinhanh;
+   final String mota;
+   final String createdAt;
+   final String updatedAt;
+   final int masanpham;
+   final int machitietsanpham;
+   final String thuonghieu;
+   final String noisanxuat;
+   final String chatlieu;
+   final String phongcach;
+   final String mausac;
+   final int chieudai;
+   final int chieurong;
+   final String baohanh;
 
   Product({ required this.id, required this.maloaisp,required this.tensp,required this.giaban, required this.soluongton,required this.trangthai,required this.hinhanh,required this.mota,required this.createdAt,required this.updatedAt,required this.masanpham,required this.machitietsanpham, required this.thuonghieu, required this.noisanxuat,required this.chatlieu, required this.phongcach,required this.mausac,required this.chieudai,required this.chieurong, required  this.baohanh});
 

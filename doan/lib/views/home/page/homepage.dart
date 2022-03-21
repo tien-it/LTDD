@@ -29,16 +29,13 @@ class _homepageState extends State<homepage> {
         FocusScopeNode currentFocus = FocusScope.of(context);
         if (!currentFocus.hasPrimaryFocus) currentFocus.unfocus();
       },
-      child: BlocProvider(
-        create: (_) => HomeBloc(),
-        child: Scaffold(
+      child:Scaffold(
           backgroundColor: Colors.white,
           bottomNavigationBar: getFooter(),
           appBar: getAppBar(activeTab),
           body: getBody(activeTab),
-        ),
-      ),
-    );
+        ));
+
   }
 
   getBody(var activeTab) {

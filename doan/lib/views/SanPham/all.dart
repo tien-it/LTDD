@@ -1,9 +1,7 @@
 import 'package:doan/models/product.dart';
-import 'package:doan/presenters/home/bloc.dart';
 import 'package:doan/presenters/home/http_request.dart';
 import 'package:doan/resources/configs/config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ALLPRODUCT extends StatefulWidget {
   const ALLPRODUCT({Key? key}) : super(key: key);
@@ -13,36 +11,9 @@ class ALLPRODUCT extends StatefulWidget {
 }
 
 class _ALLPRODUCTState extends State<ALLPRODUCT> {
-  final home = HomeBloc();
   @override
   Widget build(BuildContext context) {
     return
-    //   BlocProvider<HomeBloc>(
-    //   create: (_)=>home,
-    //   child: BlocListener<HomeBloc ,HomeState>(
-    //     listener: (context, state) {
-    //
-    //     },
-    //     child:
-    //     BlocBuilder<HomeBloc, HomeState>(
-    //       builder: (context, LoadingSucces)
-    //       {
-    //         return SafeArea(
-    //             child:Column(
-    //               children: [
-    //                 TextButton(onPressed: (){
-    //                   home.add(LoadProduct()) ;
-    //                 } , child: Text('load')),
-    //                 Text(LoadingSucces.props.toString())
-    //               ],
-    //             )
-    //         );
-    //       }
-    //     )
-    //
-    //   ),
-    // );
-
       Scaffold(
         body: FutureBuilder<List<Product>>(
             future: ApiServices().fetchProduct(),
@@ -90,7 +61,7 @@ class _ALLPRODUCTState extends State<ALLPRODUCT> {
                                         TextButton(
                                           onPressed: () {
                                             Navigator.pushNamed(
-                                                context, Routes.home);
+                                                context, Routes.singleproduct, arguments: snapshot.data![i]);
                                           },
                                           child:const  Text("Chi tiết",
                                               style: TextStyle(

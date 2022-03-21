@@ -1,3 +1,4 @@
+import 'package:doan/models/product.dart';
 import 'package:doan/views/AddressBook/addresspage.dart';
 import 'package:doan/views/BillInfomation/billinforpage.dart';
 import 'package:doan/views/Buyafter/afternullpage.dart';
@@ -6,6 +7,7 @@ import 'package:doan/views/ForgotPassword/phonepage.dart';
 import 'package:doan/views/Login/login.dart';
 import 'package:doan/views/Login/password.dart';
 import 'package:doan/views/SanPham/all.dart';
+import 'package:doan/views/SanPham/product_detail.dart';
 import 'package:doan/views/Saw/sawpage.dart';
 import 'package:doan/views/SignUp/confirmphonenumber.dart';
 import 'package:doan/views/SignUp/createpass.dart';
@@ -50,6 +52,7 @@ class Routes {
   static const String fogot_password = "/fogot_password";
   static const String allproduct = "/all_product";
   static const String authenphone = "/authenhone";
+  static const String singleproduct = "/singleproduct";
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
 
@@ -59,14 +62,20 @@ class Routes {
        builder: (context){
          return ConfirmPhoneNumberPage(data :data);
        } ); }
-
-
+      case  singleproduct:
+        {
+          var product = settings.arguments as Product;
+          return MaterialPageRoute(
+              builder: (context) {
+                return SingleProduct(product: product);
+              }, fullscreenDialog: true);
+        }
     case  allproduct:
     return MaterialPageRoute(
     builder: (context) {
     return  ALLPRODUCT();
-
     },fullscreenDialog: true);
+    
     case  fogot_password:
     return MaterialPageRoute(
     builder: (context) {
