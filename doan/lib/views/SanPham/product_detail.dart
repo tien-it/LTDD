@@ -79,11 +79,12 @@ class _SingleProductState extends State<SingleProduct> {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Text(
+
+                            Text('\$'+
                               product.giaban.toString(),
                               style: const TextStyle(
                                 fontSize: 22,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w600, color: Colors.red
                               ),
                             ),
                           ],

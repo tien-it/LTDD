@@ -567,7 +567,9 @@ class _homepageState extends State<homepage> {
       title: SearchWidget(),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, Routes.cart);
+          },
           icon: const Icon(
             Icons.shopping_cart,
             size: 25,

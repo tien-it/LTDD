@@ -19,4 +19,15 @@ class ApiServices {
     }
     return parseProducts(response.body);
   }
+  Future<Product> fetchSingleProduct(int id) async {
+    var response = await http.get(Uri.parse("http://10.0.2.2:8000/api/sanpham/$id"));
+    print(response.body);
+    final int statusCode = response.statusCode;
+    if (statusCode != 200 || response.body == null) {
+      print(response.reasonPhrase);
+      throw new Exception("Lỗi load api");
+    }
+    var product = Product.fromJson(json.decode(response.body));
+    return  product;
+  }
 }

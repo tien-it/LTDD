@@ -282,7 +282,6 @@ Future<void> SignUp( BuildContext context,String name , String phone, String ema
         'PHUONGTHUCDANGNHAP': '1'  ,
         'TRANGTHAI' : '1'
       }));
-
   print(response.body);
   Map<String, dynamic> userMap  = jsonDecode(response.body);
   myuser = taikhoan.fromJson(userMap);

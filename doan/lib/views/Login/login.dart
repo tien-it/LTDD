@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
 Future<void> login( BuildContext context, String phone, String password) async {
     var client = http.Client();
     var response =
-        await client.post(Uri.parse('http://127.0.0.1:8000/api/login'),
+        await client.post(Uri.parse('http://10.0.2.2:8000/api/login'),
             body: ({
               'SODIENTHOAI': phone,
               'MATKHAU': password,

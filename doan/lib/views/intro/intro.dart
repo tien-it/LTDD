@@ -1,3 +1,4 @@
+import 'package:doan/data_sources/local/local.dart';
 import 'package:doan/resources/configs/config.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,9 @@ class _IntroPageState extends State<IntroPage> {
             ),
             ElevatedButton(
               onPressed: () {
+                if( myuser == null) {
+                  Navigator.pushNamed(context, Routes.login);
+                }
                 Navigator.pushNamed(context, Routes.home);
               },
               child: const Text(

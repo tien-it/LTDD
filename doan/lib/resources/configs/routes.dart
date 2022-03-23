@@ -23,6 +23,7 @@ import 'package:doan/views/user/account/sua_ngaysinh.dart';
 import 'package:doan/views/user/account/sua_sodienthoai.dart';
 import 'package:doan/views/user/account/sua_tendangnhap.dart';
 import 'package:doan/views/user/account/thongtincanhan.dart';
+import 'package:doan/views/user/cart/CartView.dart';
 import 'package:doan/views/user/order/detail_order.dart';
 import 'package:doan/views/user/order/order.dart';
 import 'package:flutter/material.dart';
@@ -53,16 +54,23 @@ class Routes {
   static const String allproduct = "/all_product";
   static const String authenphone = "/authenhone";
   static const String singleproduct = "/singleproduct";
+  static const String cart = "/Cart";
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
 
-      case authenphone :{
+    case  cart:
+    return MaterialPageRoute(
+        builder: (context) {
+          return Cart();
+        }
+        ,fullscreenDialog: true);
+    case authenphone :{
         var data = settings.arguments as String;
        return MaterialPageRoute(
        builder: (context){
          return ConfirmPhoneNumberPage(data :data);
        } ); }
-      case  singleproduct:
+    case  singleproduct:
         {
           var product = settings.arguments as Product;
           return MaterialPageRoute(
