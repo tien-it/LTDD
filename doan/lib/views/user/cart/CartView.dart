@@ -57,7 +57,6 @@ import 'package:flutter/material.dart';
                                                      padding: const EdgeInsets.only(right: 20),
                                                      child: Text('Giá : ${ snapshot.data!.giaban.toString()}'),
                                                    ),
-                                                   IconButton(onPressed: (){}, icon: Icon(Icons.delete))
                                                  ],
 
                                                )
@@ -67,7 +66,15 @@ import 'package:flutter/material.dart';
                                          return const CircularProgressIndicator();
                                        }
                                    ),
-                                   Text('   Quanity:'+ snapshot.data![i].soluong.toString(), style: TextStyle( fontSize: 14),)
+                                   Column(
+                                     children: [
+                                       Text('   Quanity:'+ snapshot.data![i].soluong.toString(), style: TextStyle( fontSize: 14),),
+                                       IconButton(onPressed: (){
+                                         Delete(context, snapshot.data![i].id.toString());
+                                       }, icon: Icon(Icons.delete))
+                                     ],
+                                   ),
+
                                  ],
                                ),
                            )

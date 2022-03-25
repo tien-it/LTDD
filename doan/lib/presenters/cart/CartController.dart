@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
   Future<void> Create(BuildContext context, String makh, String mactsp,
-      int soluong, int gia) async {
+      String soluong, String gia) async {
     print(makh + mactsp + soluong.toString() + gia.toString() );
     var client = http.Client();
     var response =
@@ -20,8 +20,6 @@ import 'package:http/http.dart' as http;
           'GIA': gia,
         }));
     print(response.body);
-    Map<String, dynamic> cartMap = jsonDecode(response.body);
-    print(response.body);
     if (response.statusCode == 201) {
       ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
@@ -31,7 +29,7 @@ import 'package:http/http.dart' as http;
           ),
         );
       Navigator.pushNamed(
-          context, Routes.home);
+          context, Routes.singleproduct);
     }
     else {
       ScaffoldMessenger.of(context)
@@ -43,7 +41,32 @@ import 'package:http/http.dart' as http;
         );
     }
   }
-
+Future<void> Delete(BuildContext context, String id) async {
+  print("id cart "+ id );
+  var client = http.Client();
+  var response = await client.get(Uri.parse('http://10.0.2.2:8000/api/giohang/xoa/$id'));
+  print(response.body);
+  if (response.statusCode == 201) {
+    ScaffoldMessenger.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        const SnackBar(
+          content: Text('xoa thành công'),
+        ),
+      );
+    Navigator.pushNamed(
+        context, Routes.cart);
+  }
+  else {
+    ScaffoldMessenger.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        const SnackBar(
+          content: Text('Xoa Không Thành Công'),
+        ),
+      );
+  }
+}
 // cast giỏ hàng thành list
   List<giohang> parseCart(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
