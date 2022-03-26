@@ -126,39 +126,48 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 }
-Future<void> login( BuildContext context, String phone, String password) async {
+Future<ScaffoldMessengerState> login( BuildContext context, String phone, String password) async {
     var client = http.Client();
     var response =
         await client.post(Uri.parse('http://10.0.2.2:8000/api/login'),
             body: ({
               'SODIENTHOAI': phone,
               'MATKHAU': password,
-            })
-        );
-        print(response.body);
+            }));
       //final prefs = await SharedPreferences.getInstance();
      //prefs.setString( 'user',response.body
-    Map<String, dynamic> userMap  = jsonDecode(response.body);
 
-      myuser = taikhoan.fromJson(userMap);
         print(response.body);
 
     if (response.statusCode == 201) {
-      LoginRequestModel(response.body);
+      Map<String, dynamic> userMap  = jsonDecode(response.body);
+      myuser = taikhoan.fromJson(userMap);
+
       Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const homepage(),
           ));
+      return (
+          ScaffoldMessenger.of(context)
+            ..removeCurrentSnackBar()
+            ..showSnackBar(
+              const SnackBar(
+                content: Text('Đăng Nhập Thành Công'),
+              ),
+            )
+      );
     }
     else {
+      return (
       ScaffoldMessenger.of(context)
         ..removeCurrentSnackBar()
         ..showSnackBar(
           const SnackBar(
             content: Text('Số điện thoại hoặc mật khẩu không đúng'),
           ),
-        );
+        )
+      );
     }
   }
 

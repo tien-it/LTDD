@@ -50,7 +50,7 @@ class _AccountPageState extends State<AccountPage> {
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(
+                        Navigator.popAndPushNamed(
                             context, Routes.login);
                       },
                       child: const Text(

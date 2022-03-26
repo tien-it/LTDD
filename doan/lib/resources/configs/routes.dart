@@ -3,6 +3,7 @@ import 'package:doan/views/AddressBook/addresspage.dart';
 import 'package:doan/views/BillInfomation/billinforpage.dart';
 import 'package:doan/views/Buyafter/afternullpage.dart';
 import 'package:doan/views/Buyafter/afterpage.dart';
+import 'package:doan/views/ForgotPassword/createnewpass.dart';
 import 'package:doan/views/ForgotPassword/phonepage.dart';
 import 'package:doan/views/Login/login.dart';
 import 'package:doan/views/Login/password.dart';
@@ -194,7 +195,7 @@ class Routes {
         });
       case change_password:
         return MaterialPageRoute(builder: (context) {
-          return DoiMatKhau();
+          return CreateNewPassPage();
         });
       case change_birthday:
         return MaterialPageRoute(builder: (context) {

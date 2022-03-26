@@ -1,3 +1,4 @@
+import 'package:doan/data_sources/local/local.dart';
 import 'package:flutter/material.dart';
 class SuaSoDienThoai extends StatefulWidget {
   const SuaSoDienThoai({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _SuaSoDienThoaiState extends State<SuaSoDienThoai> {
                 const  Text('Số Điện Thoại', style: TextStyle(fontSize: 20),),
                 TextField(
                   decoration:  InputDecoration(
-                      hintText: "0327688126",
+                      hintText: myuser.phone,
                       suffixIcon: IconButton(
                         onPressed: (){},
                         icon: const Icon(Icons.cancel ,),

@@ -1,3 +1,4 @@
+import 'package:doan/data_sources/local/local.dart';
 import 'package:flutter/material.dart';
 class SuaEmail extends StatefulWidget {
   const SuaEmail({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _SuaEmailState extends State<SuaEmail> {
                 const  Text('Email', style: TextStyle(fontSize: 20),),
                 TextField(
                   decoration:  InputDecoration(
-                      hintText: "vantien@gmail.com",
+                      hintText: myuser.email,
                       suffixIcon: IconButton(
                         onPressed: (){},
                         icon: const Icon(Icons.cancel ,),

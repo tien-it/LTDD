@@ -1,13 +1,11 @@
 
 import 'package:doan/data_sources/app/appdata.dart';
-import 'package:doan/presenters/home/bloc.dart';
 import 'package:doan/resources/configs/config.dart';
 import 'package:doan/views/Love/lovepage.dart';
 import 'package:doan/views/home/widget/carousel_loading.dart';
 import 'package:doan/views/home/widget/searchWidget.dart';
 import 'package:doan/views/user/account_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);

@@ -1,3 +1,4 @@
+import 'package:doan/data_sources/local/local.dart';
 import 'package:flutter/material.dart';
 class SuaTenDangNhap extends StatefulWidget {
   const SuaTenDangNhap({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _SuaTenDangNhapState extends State<SuaTenDangNhap> {
                 const  Text('Tên Đăng Nhập', style: TextStyle(fontSize: 20),),
                 TextField(
                   decoration:  InputDecoration(
-                      hintText: "vantien1308",
+                      hintText: myuser.username,
                       suffixIcon: IconButton(
                         onPressed: (){},
                         icon: const Icon(Icons.cancel ,),
