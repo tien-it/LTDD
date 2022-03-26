@@ -1,6 +1,7 @@
 import 'package:doan/data_sources/local/local.dart';
 import 'package:doan/models/product.dart';
 import 'package:doan/presenters/cart/CartController.dart';
+import 'package:doan/resources/configs/config.dart';
 import 'package:flutter/material.dart';
 
 class SingleProduct extends StatefulWidget {
@@ -32,7 +33,9 @@ class _SingleProductState extends State<SingleProduct> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.cart);
+            },
             icon: const Icon(
               Icons.shopping_cart,
               color: Colors.black,

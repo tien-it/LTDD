@@ -1,5 +1,5 @@
 class binhluan {
-  final int? id;
+  final int id;
   final String makhachhang;
   final String masanpham ;
   final String noidung ;
